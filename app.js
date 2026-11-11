@@ -336,21 +336,28 @@
   /* ---------- Código de vestimenta ---------- */
   const V = D.vestimenta || {};
   poner("#vestimenta-tipo", V.tipo);
+  poner("#vestimenta-estilo", V.estilo);
   poner("#vestimenta-nota", V.nota);
-  const reservados = $("#reservados");
-  const colores = V.coloresReservados || [];
-  if (colores.length) {
-    reservados.append(crear("p", "etiqueta reservados-titulo", "Color reservado"));
-    colores.forEach((c) => {
-      const r = crear("div", "reservado");
-      const muestra = crear("i");
-      muestra.style.background = c.color;
-      r.append(muestra, crear("span", "", c.nombre));
-      reservados.append(r);
+  const cajaColores = $("#colores-vestimenta");
+  const grupos = [
+    ["Viste de", V.coloresSugeridos || []],
+    [(V.coloresReservados || []).length > 1 ? "Colores reservados" : "Color reservado", V.coloresReservados || []],
+  ].filter(([, lista]) => lista.length);
+  grupos.forEach(([titulo, lista]) => {
+    const g = crear("div", "grupo-color");
+    g.append(crear("p", "etiqueta", titulo));
+    const fila = crear("div", "muestras");
+    lista.forEach((c) => {
+      const m = crear("div", "muestra");
+      const bolita = crear("i");
+      bolita.style.background = c.color;
+      m.append(bolita, crear("span", "", c.nombre));
+      fila.append(m);
     });
-  } else {
-    reservados.hidden = true;
-  }
+    g.append(fila);
+    cajaColores.append(g);
+  });
+  cajaColores.hidden = !grupos.length;
 
   /* ---------- Confirmar asistencia ---------- */
   const C = D.confirmar || {};

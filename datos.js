@@ -69,10 +69,13 @@ const INVITACION = {
 
   // ---------- Código de vestimenta ----------
   vestimenta: {
-    tipo: "Formal",
-    nota: "Te pedimos no usar el color reservado para la quinceañera.",
+    tipo: "Formal casual",
+    estilo: "All black", // sale en una etiqueta debajo (vacío = no se pone)
+    nota: "Ven vestido de negro de pies a cabeza. El morado es solo para la quinceañera.",
+    // Colores que deben llevar los invitados. Si no hay, deja la lista vacía: []
+    coloresSugeridos: [{ nombre: "Negro", color: "#161216" }],
     // Colores que nadie más debe llevar. Si no hay, deja la lista vacía: []
-    coloresReservados: [{ nombre: "Champaña", color: "#e6d3b3" }],
+    coloresReservados: [{ nombre: "Morado", color: "#6b2d78" }],
   },
 
   // ---------- Fotos del carrusel ----------

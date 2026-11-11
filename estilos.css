@@ -11,6 +11,7 @@
   --acento: #b39361;       /* detalles (dorado suave) */
   --acento-claro: #dcc8a6; /* detalles sobre fondo oscuro */
   --error: #a65a4f;
+  --negro: #161216;        /* el negro del código de vestimenta */
   --afuera: #cfc4b5;       /* lo que rodea la invitación en la computadora */
   --afuera-luz: #e6ded2;
   --sello-luz: var(--acento-claro); /* el sello del sobre */
@@ -504,7 +505,22 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
   stroke-width: 1.1;
   pointer-events: none;
 }
-.tema-oscuro .rama { color: var(--acento-claro); opacity: 0.35; }
+.tema-oscuro .rama { color: var(--acento-claro); opacity: 0.6; }
+
+/* Otros adornos (luna, estrellas, mariposas): no se voltean como las ramitas */
+.dibujo {
+  position: absolute;
+  width: 6em;
+  height: 6em;
+  color: var(--acento-claro);
+  opacity: 0.6;
+  stroke-width: 1.1;
+  pointer-events: none;
+}
+.dibujo.arriba-izq { left: 1.6em; top: 1.6em; }
+.dibujo.abajo-der { right: 1.6em; bottom: 1.6em; }
+.dibujo.mariposa { width: 4.2em; height: 4.2em; stroke-width: 1.6; transform: rotate(-16deg); }
+.dibujo.mariposa.chica { width: 3em; height: 3em; transform: rotate(18deg); opacity: 0.45; }
 .rama.abajo-izq { left: 1.5em; bottom: 1.5em; }
 .rama.arriba-der { right: 1.5em; top: 1.5em; transform: rotate(180deg); }
 .rama.arriba-izq { left: 1.5em; top: 1.5em; transform: scaleY(-1); }
@@ -651,19 +667,37 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
   display: flex;
   gap: 1.2em;
   margin: 1.1em 0 0.2em;
-  color: var(--acento);
 }
-.iconos-vestimenta svg { width: 4.4em; height: 4.4em; stroke-width: 1.3; }
-.reservados { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2em; margin-top: 1.5em; }
-.reservado { display: flex; flex-direction: column; align-items: center; gap: 0.5em; font-size: 0.78em; color: var(--texto-suave); }
-.reservado i {
+/* vestido y traje en negro (all black) con detalles plateados */
+.iconos-vestimenta svg {
+  width: 4.4em;
+  height: 4.4em;
+  stroke-width: 1.3;
+  fill: var(--negro);
+  stroke: var(--acento-claro);
+}
+.estilo-vestimenta {
+  margin: -0.25em 0 1em;
+  padding: 0.55em 1.4em;
+  border-radius: 999px;
+  background: var(--negro);
+  color: var(--en-oscuro);
+  font-size: 0.72em;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+.colores-vestimenta { display: flex; justify-content: center; gap: 2.4em; margin-top: 1.5em; }
+.grupo-color { display: flex; flex-direction: column; align-items: center; gap: 0.7em; }
+.muestras { display: flex; gap: 1em; }
+.muestra { display: flex; flex-direction: column; align-items: center; gap: 0.45em; font-size: 0.78em; color: var(--texto-suave); }
+.muestra i {
   width: 2.8em;
   height: 2.8em;
   border-radius: 50%;
   border: 1px solid var(--linea-suave);
   box-shadow: inset 0 0 0 4px var(--claro);
 }
-.reservados-titulo { width: 100%; margin-bottom: -0.3em; }
 
 /* ---------- 7. Confirmar ---------- */
 .formulario { width: 100%; text-align: left; }
