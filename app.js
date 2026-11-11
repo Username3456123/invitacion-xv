@@ -28,6 +28,10 @@
   const pasesUrl = parseInt(params.get("pases"), 10);
   const pasesMax = pasesUrl > 0 ? Math.min(pasesUrl, 30) : Math.max(1, D.confirmar.pasesMaximos || 1);
 
+  // La barra del navegador del celular toma el color de la paleta
+  const colorClaro = getComputedStyle(document.documentElement).getPropertyValue("--claro").trim();
+  if (colorClaro) $("meta[name=theme-color]").content = colorClaro;
+
   /* ---------- Textos ---------- */
   $$("[data-dato=nombre]").forEach((el) => (el.textContent = D.nombre));
   document.title = `Mis XV años · ${D.nombre}`;

@@ -6,6 +6,11 @@
 // ============================================================
 
 const INVITACION = {
+  // ---------- Colores ----------
+  // "neutral" (crema y dorado) o "berenjena" (plateado y morado berenjena).
+  // Para probar otra sin cambiar esta, agrega al enlace: ?paleta=berenjena
+  paleta: "neutral",
+
   // ---------- La quinceañera ----------
   nombre: "Valentina",
   monograma: "", // letra del sello de la portada; vacío = la primera letra del nombre

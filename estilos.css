@@ -11,13 +11,37 @@
   --acento: #b39361;       /* detalles (dorado suave) */
   --acento-claro: #dcc8a6; /* detalles sobre fondo oscuro */
   --error: #a65a4f;
+  --afuera: #cfc4b5;       /* lo que rodea la invitación en la computadora */
+  --afuera-luz: #e6ded2;
+  --sello-luz: var(--acento-claro); /* el sello del sobre */
+  --sello: var(--acento);
+  --sello-sombra: #8c6f45;
+  --sello-texto: var(--claro);
 
   --letra-nombre: "Pinyon Script", cursive;
   --letra-titulos: "Cormorant Garamond", Georgia, serif;
   --letra-texto: "Jost", system-ui, sans-serif;
 
-  --linea: rgba(179, 147, 97, 0.45);
-  --linea-suave: rgba(45, 39, 35, 0.14);
+  --linea: color-mix(in srgb, var(--acento) 45%, transparent);
+  --linea-suave: color-mix(in srgb, var(--oscuro) 14%, transparent);
+}
+
+/* Paleta plateado y morado berenjena (se elige en datos.js → paleta) */
+:root[data-paleta="berenjena"] {
+  --claro: #f6f4f8;        /* blanco perla */
+  --arena: #ebe7ef;        /* gris lila */
+  --oscuro: #3b1c3b;       /* morado berenjena */
+  --texto-suave: #6d6273;
+  --en-oscuro: #f4f1f6;
+  --acento: #6c6378;       /* plata oscura */
+  --acento-claro: #cdc9d4; /* plata */
+  --error: #b04a5a;
+  --afuera: #c9c1cf;
+  --afuera-luz: #ece8f0;
+  --sello-luz: #ffffff;
+  --sello: #c8c5ce;
+  --sello-sombra: #87828f;
+  --sello-texto: var(--oscuro);
 }
 
 /* ---------- Base ---------- */
@@ -25,7 +49,7 @@
 [hidden] { display: none !important; }
 html, body { margin: 0; height: 100%; }
 body {
-  background: #d8cfc2;
+  background: var(--afuera);
   color: var(--oscuro);
   font-family: var(--letra-texto);
   font-weight: 400;
@@ -58,12 +82,12 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
   body {
     display: grid;
     place-items: center;
-    background: radial-gradient(circle at 50% 30%, #e6ded2, #cfc4b5);
+    background: radial-gradient(circle at 50% 30%, var(--afuera-luz), var(--afuera));
   }
   .marco {
     --alto: calc(100vh - 40px);
     border-radius: 28px;
-    box-shadow: 0 30px 80px -24px rgba(45, 39, 35, 0.5);
+    box-shadow: 0 30px 80px -24px color-mix(in srgb, var(--oscuro) 50%, transparent);
   }
 }
 .marco > * { font-size: clamp(13px, 4cqw, 19px); }
@@ -140,7 +164,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
   color: var(--texto-suave);
   max-width: 21em;
 }
-.tema-oscuro .frase { color: rgba(244, 238, 229, 0.78); }
+.tema-oscuro .frase { color: color-mix(in srgb, var(--en-oscuro) 78%, transparent); }
 .texto {
   font-size: 0.95em;
   line-height: 1.55;
@@ -297,7 +321,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
   margin-bottom: 1.6em;
 }
 .conteo div {
-  border: 1px solid rgba(220, 200, 166, 0.35);
+  border: 1px solid color-mix(in srgb, var(--acento-claro) 35%, transparent);
   border-radius: 0.5em;
   padding: 0.85em 0 0.7em;
 }
@@ -330,7 +354,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
 .hora-larga {
   font-size: 0.85em;
   letter-spacing: 0.12em;
-  color: rgba(244, 238, 229, 0.7);
+  color: color-mix(in srgb, var(--en-oscuro) 70%, transparent);
   margin: 0.35em 0 1.8em;
 }
 
@@ -358,7 +382,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
 .boton.secundario { background: transparent; color: inherit; border-color: currentColor; }
 .boton.ancho { width: 100%; }
 .tema-oscuro .boton { background: var(--acento-claro); border-color: var(--acento-claro); color: var(--oscuro); }
-.tema-oscuro .boton.secundario { background: transparent; color: var(--en-oscuro); border-color: rgba(244, 238, 229, 0.5); }
+.tema-oscuro .boton.secundario { background: transparent; color: var(--en-oscuro); border-color: color-mix(in srgb, var(--en-oscuro) 50%, transparent); }
 
 /* ---------- Ceremonia religiosa y recepción ---------- */
 .icono-evento {
@@ -426,7 +450,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
   top: 0;
   bottom: 0;
   width: 1px;
-  background: rgba(220, 200, 166, 0.35);
+  background: color-mix(in srgb, var(--acento-claro) 35%, transparent);
 }
 .linea-tiempo li:first-child::before { top: 50%; }
 .linea-tiempo li:last-child::before { bottom: 50%; }
@@ -486,7 +510,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
   border-radius: 0.7em;
-  box-shadow: 0 18px 40px -22px rgba(45, 39, 35, 0.55);
+  box-shadow: 0 18px 40px -22px color-mix(in srgb, var(--oscuro) 55%, transparent);
 }
 .pista::-webkit-scrollbar { display: none; }
 .pista figure {
@@ -495,7 +519,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
   margin: 0;
   aspect-ratio: 4 / 5;
   scroll-snap-align: center;
-  background: #e2d8ca;
+  background: var(--arena);
 }
 .pista img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .pista figcaption {
@@ -504,7 +528,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
   right: 0;
   bottom: 0;
   padding: 2.2em 1em 0.9em;
-  background: linear-gradient(transparent, rgba(45, 39, 35, 0.7));
+  background: linear-gradient(transparent, color-mix(in srgb, var(--oscuro) 70%, transparent));
   color: var(--en-oscuro);
   font-family: var(--letra-titulos);
   font-style: italic;
@@ -520,7 +544,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
   place-items: center;
   border: 0;
   border-radius: 50%;
-  background: rgba(247, 243, 237, 0.82);
+  background: color-mix(in srgb, var(--claro) 82%, transparent);
   color: var(--oscuro);
   cursor: pointer;
   backdrop-filter: blur(4px);
@@ -547,11 +571,11 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
   font-size: 0.68em;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(244, 238, 229, 0.6);
+  color: color-mix(in srgb, var(--en-oscuro) 60%, transparent);
 }
 .quiz-barra {
   height: 2px;
-  background: rgba(244, 238, 229, 0.15);
+  background: color-mix(in srgb, var(--en-oscuro) 15%, transparent);
   margin: 0.8em 0 1.3em;
   border-radius: 2px;
   overflow: hidden;
@@ -570,9 +594,9 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
   width: 100%;
   margin-bottom: 0.6em;
   padding: 0.8em 1em;
-  border: 1px solid rgba(244, 238, 229, 0.22);
+  border: 1px solid color-mix(in srgb, var(--en-oscuro) 22%, transparent);
   border-radius: 0.7em;
-  background: rgba(244, 238, 229, 0.04);
+  background: color-mix(in srgb, var(--en-oscuro) 4%, transparent);
   text-align: left;
   font-size: 0.95em;
   cursor: pointer;
@@ -608,7 +632,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
   line-height: 1.3;
   margin: 0.6em 0 1.6em;
 }
-.quiz .texto { color: rgba(244, 238, 229, 0.75); margin: 0 auto 1.8em; }
+.quiz .texto { color: color-mix(in srgb, var(--en-oscuro) 75%, transparent); margin: 0 auto 1.8em; }
 .quiz .boton { align-self: center; }
 
 /* ---------- 6. Código de vestimenta ---------- */
@@ -649,7 +673,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
   width: 100%;
   padding: 0.5em 0;
   border: 0;
-  border-bottom: 1px solid rgba(45, 39, 35, 0.25);
+  border-bottom: 1px solid color-mix(in srgb, var(--oscuro) 25%, transparent);
   border-radius: 0;
   background: transparent;
   color: var(--oscuro);
@@ -662,7 +686,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
 .campo input:focus,
 .campo textarea:focus { border-bottom-color: var(--acento); }
 .campo input::placeholder,
-.campo textarea::placeholder { color: rgba(45, 39, 35, 0.35); }
+.campo textarea::placeholder { color: color-mix(in srgb, var(--oscuro) 35%, transparent); }
 .campo.mal input { border-bottom-color: var(--error); }
 .error { font-size: 0.78em; color: var(--error); margin: -0.7em 0 1em; }
 .segmentado { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5em; }
@@ -671,7 +695,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
 .segmentado span {
   display: block;
   padding: 0.8em 0.4em;
-  border: 1px solid rgba(45, 39, 35, 0.25);
+  border: 1px solid color-mix(in srgb, var(--oscuro) 25%, transparent);
   border-radius: 999px;
   text-align: center;
   font-size: 0.86em;
@@ -684,7 +708,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
 .contador button {
   width: 2.3em;
   height: 2.3em;
-  border: 1px solid rgba(45, 39, 35, 0.3);
+  border: 1px solid color-mix(in srgb, var(--oscuro) 30%, transparent);
   border-radius: 50%;
   background: transparent;
   font-size: 1.05em;
@@ -725,7 +749,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
   place-items: center;
   border: 1px solid var(--linea);
   border-radius: 50%;
-  background: rgba(247, 243, 237, 0.75);
+  background: color-mix(in srgb, var(--claro) 75%, transparent);
   color: var(--oscuro);
   cursor: pointer;
   backdrop-filter: blur(6px);
@@ -738,7 +762,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
   0%, 100% { transform: rotate(-8deg); }
   50% { transform: rotate(8deg); }
 }
-.marco[data-tema="oscuro"] .boton-musica { background: rgba(45, 39, 35, 0.6); color: var(--en-oscuro); }
+.marco[data-tema="oscuro"] .boton-musica { background: color-mix(in srgb, var(--oscuro) 60%, transparent); color: var(--en-oscuro); }
 
 /* ---------- Puntitos de secciones ---------- */
 .puntos {
@@ -766,11 +790,11 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
   width: 0.36em;
   height: 0.36em;
   border-radius: 50%;
-  background: rgba(45, 39, 35, 0.25);
+  background: color-mix(in srgb, var(--oscuro) 25%, transparent);
   transition: transform 0.3s ease, background 0.3s ease;
 }
 .puntos button.activo::before { background: var(--acento); transform: scale(1.5); }
-.marco[data-tema="oscuro"] .puntos button::before { background: rgba(244, 238, 229, 0.3); }
+.marco[data-tema="oscuro"] .puntos button::before { background: color-mix(in srgb, var(--en-oscuro) 30%, transparent); }
 .marco[data-tema="oscuro"] .puntos button.activo::before { background: var(--acento-claro); }
 
 /* ---------- Sobre ---------- */
@@ -786,7 +810,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
   text-align: center;
   padding: 0 2em;
   background:
-    radial-gradient(circle at 50% 100%, rgba(179, 147, 97, 0.12), transparent 60%),
+    radial-gradient(circle at 50% 100%, color-mix(in srgb, var(--acento) 12%, transparent), transparent 60%),
     var(--claro);
   transition: transform 1.1s cubic-bezier(0.7, 0, 0.2, 1);
 }
@@ -801,7 +825,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
   justify-content: flex-start;
   padding-top: 5em;
   background:
-    radial-gradient(circle at 50% 0%, rgba(179, 147, 97, 0.12), transparent 60%),
+    radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--acento) 12%, transparent), transparent 60%),
     var(--arena);
 }
 .solapa .nombre { font-size: 3.6em; }
@@ -825,9 +849,9 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
   transform: translate(-50%, -50%);
   border: 0;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, var(--acento-claro), var(--acento) 58%, #8c6f45);
-  color: var(--claro);
-  box-shadow: 0 12px 26px -10px rgba(45, 39, 35, 0.6);
+  background: radial-gradient(circle at 35% 30%, var(--sello-luz), var(--sello) 58%, var(--sello-sombra));
+  color: var(--sello-texto);
+  box-shadow: 0 12px 26px -10px color-mix(in srgb, var(--oscuro) 60%, transparent);
   cursor: pointer;
   animation: pulso 2.4s ease-in-out infinite;
   transition: transform 0.5s ease, opacity 0.5s ease;
