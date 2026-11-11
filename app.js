@@ -39,6 +39,18 @@
     poner("#sobre-para", `Para: ${invitado}`);
   }
 
+  // Portada: foto en el arco y monograma
+  const inicial = (D.monograma || D.nombre || "").trim().charAt(0).toUpperCase();
+  $("#monograma").textContent = inicial;
+  $("#sello span").textContent = inicial || "XV";
+  if (D.fotoPortada) {
+    const foto = $("#foto-portada");
+    foto.src = D.fotoPortada;
+    foto.alt = `Foto de ${D.nombre}`;
+  } else {
+    $("#arco").classList.add("sin-foto");
+  }
+
   function nombresEnLineas(el, lista) {
     el.replaceChildren();
     (lista || []).forEach((n, i) => {
@@ -74,7 +86,7 @@
     );
     $("#fecha-larga").textContent = mayuscula(larga.replace(",", ""));
     $("#hora-larga").textContent = hora;
-    $("#fecha-corta").textContent = `${partes.day} · ${partes.month} · ${partes.year}`;
+    $$("[data-dato=fecha-corta]").forEach((el) => (el.textContent = `${partes.day} · ${partes.month} · ${partes.year}`));
     $("#calendario").href = enlaceCalendario();
   } else {
     console.warn("La fecha de datos.js no se entiende:", D.fechaHora);
@@ -83,8 +95,13 @@
   function enlaceCalendario() {
     const formato = (d) => d.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
     const fin = new Date(objetivo + (D.duracionHoras || 6) * 3600 * 1000);
-    const primero = (D.eventos || [])[0] || {};
-    const detalles = (D.eventos || []).map((e) => `${e.hora} · ${e.titulo}: ${e.lugar}`).join("\n");
+    const c = D.ceremonia;
+    const r = D.recepcion;
+    const primero = c ? { lugar: c.templo, direccion: c.direccion } : r || {};
+    const detalles = [
+      c && `${c.hora} · ${c.tipo || "Ceremonia religiosa"}: ${c.templo}, ${c.direccion}`,
+      r && `${r.hora} · Recepción: ${r.lugar}, ${r.direccion}`,
+    ].filter(Boolean).join("\n");
     const datos = new URLSearchParams({
       action: "TEMPLATE",
       text: `XV años de ${D.nombre}`,
@@ -126,24 +143,64 @@
   tic();
   reloj = setInterval(tic, 1000);
 
-  /* ---------- Cuándo y dónde ---------- */
-  const lista = $("#eventos");
-  (D.eventos || []).forEach((e) => {
-    const t = crear("article", "tarjeta aparece");
-    t.append(crear("p", "etiqueta", e.titulo));
-    t.append(crear("p", "hora", e.hora));
-    t.append(crear("p", "lugar", e.lugar));
-    t.append(crear("p", "direccion", e.direccion));
-    const mapa = crear("a", "boton secundario");
-    mapa.href = e.mapa || "https://www.google.com/maps/search/?api=1&query=" +
-      encodeURIComponent([e.lugar, e.direccion].filter(Boolean).join(", "));
-    mapa.target = "_blank";
-    mapa.rel = "noopener";
-    mapa.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg>';
-    mapa.append("Cómo llegar");
-    t.append(mapa);
-    lista.append(t);
-  });
+  /* ---------- Ceremonia religiosa y recepción ---------- */
+  function pintarEvento(id, ev, lugar) {
+    const seccion = $(`#${id}`);
+    if (!ev || !lugar) {
+      seccion.remove();
+      return;
+    }
+    const campo = (k) => $(`[data-ev=${k}]`, seccion);
+    const ponerEv = (k, texto) => {
+      campo(k).textContent = texto || "";
+      campo(k).hidden = !texto;
+    };
+    ponerEv("tipo", ev.tipo);
+    ponerEv("lugar", lugar);
+    ponerEv("hora", ev.hora);
+    ponerEv("direccion", ev.direccion);
+    ponerEv("nota", ev.nota);
+    campo("mapa").href = ev.mapa || "https://www.google.com/maps/search/?api=1&query=" +
+      encodeURIComponent([lugar, ev.direccion].filter(Boolean).join(", "));
+  }
+  pintarEvento("ceremonia", D.ceremonia, D.ceremonia && D.ceremonia.templo);
+  pintarEvento("recepcion", D.recepcion, D.recepcion && D.recepcion.lugar);
+
+  /* ---------- Itinerario ---------- */
+  const itinerario = D.itinerario || [];
+  if (itinerario.length) {
+    const linea = $("#linea-tiempo");
+    itinerario.forEach((paso) => {
+      const li = crear("li", "aparece");
+      li.append(crear("span", "lt-hora", paso.hora), crear("span", "lt-punto"), crear("span", "lt-que", paso.que));
+      linea.append(li);
+    });
+  } else {
+    $("#itinerario").remove();
+  }
+
+  /* ---------- Regalos ---------- */
+  const R = D.regalos;
+  if (R) {
+    poner("#regalos-texto", R.texto);
+    const mesas = $("#mesas");
+    (R.mesas || []).forEach((m) => {
+      const t = crear("div", "mesa");
+      t.append(crear("p", "mesa-tienda", m.tienda));
+      if (m.numero) t.append(crear("p", "mesa-numero", m.numero));
+      if (m.enlace) {
+        const a = crear("a", "boton secundario", "Ver mesa de regalos");
+        a.href = m.enlace;
+        a.target = "_blank";
+        a.rel = "noopener";
+        t.append(a);
+      }
+      mesas.append(t);
+    });
+    mesas.hidden = !(R.mesas || []).length;
+  } else {
+    $("#regalos").remove();
+  }
 
   /* ---------- Fotos ---------- */
   const pista = $("#pista");

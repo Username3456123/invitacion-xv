@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ece4d8"/>
+      <stop offset="1" stop-color="#d6c8b4"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#g)"/>
+  <g fill="none" stroke="#8a7a68" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity=".75">
+    <circle cx="300" cy="330" r="70"/>
+    <path d="M160 640c10-110 70-170 140-170s130 60 140 170"/>
+  </g>
+  <text x="300" y="720" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" letter-spacing="5" fill="#7b6e60">FOTO DE PORTADA</text>
+</svg>

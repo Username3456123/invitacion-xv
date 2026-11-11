@@ -190,13 +190,60 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
 }
 .vista .aparece { opacity: 1; transform: none; }
 
-/* ---------- 1. Presentación ---------- */
+/* ---------- 1. Portada ---------- */
+.arco {
+  position: relative;
+  height: 37cqh;
+  aspect-ratio: 3 / 4;
+  margin-bottom: 2.1em;
+}
+/* marco fino por fuera del arco */
+.arco::before {
+  content: "";
+  position: absolute;
+  inset: -0.45em;
+  border: 1px solid var(--linea);
+  border-radius: 999px 999px 0.6em 0.6em;
+}
+.arco img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 999px 999px 0.4em 0.4em;
+  background: var(--arena);
+}
+.arco.sin-foto { height: auto; aspect-ratio: auto; margin-bottom: 1.4em; }
+.arco.sin-foto::before,
+.arco.sin-foto img { display: none; }
+.monograma {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 50%);
+  width: 2.9em;
+  height: 2.9em;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--acento);
+  border-radius: 50%;
+  background: var(--claro);
+  color: var(--acento);
+  font-family: var(--letra-nombre);
+  font-size: 1.25em;
+  line-height: 1;
+  padding-top: 0.15em;
+}
+.arco.sin-foto .monograma { position: static; transform: none; width: 3.6em; height: 3.6em; font-size: 1.5em; }
+.portada .nombre { margin-top: 0; }
+.portada .fecha-corta { margin-top: 0.9em; color: var(--acento); }
+
+/* ---------- 2. Mensaje ---------- */
 .bendicion {
-  font-size: 0.78em;
-  line-height: 1.5;
-  color: var(--texto-suave);
-  max-width: 19em;
-  margin-bottom: 1.6em;
+  font-family: var(--letra-titulos);
+  font-size: 1.45em;
+  line-height: 1.3;
+  max-width: 13em;
 }
 .para-quien {
   font-size: 0.66em;
@@ -313,33 +360,120 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
 .tema-oscuro .boton { background: var(--acento-claro); border-color: var(--acento-claro); color: var(--oscuro); }
 .tema-oscuro .boton.secundario { background: transparent; color: var(--en-oscuro); border-color: rgba(244, 238, 229, 0.5); }
 
-/* ---------- 3. Cuándo y dónde ---------- */
-.lista-eventos { width: 100%; display: grid; gap: 0.9em; }
-.tarjeta {
-  padding: 1.3em 1.1em 1.25em;
+/* ---------- Ceremonia religiosa y recepción ---------- */
+.icono-evento {
+  width: 4.6em;
+  height: 4.6em;
+  margin: 1em 0 0.6em;
+  color: var(--acento);
+  stroke-width: 1.2;
+}
+.tipo-evento {
+  font-family: var(--letra-titulos);
+  font-style: italic;
+  font-size: 1.1em;
+  color: var(--texto-suave);
+}
+.evento .titulo { margin: 0.15em 0 0.4em; max-width: 12em; }
+.hora-evento {
+  font-family: var(--letra-titulos);
+  font-size: 2.3em;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--acento);
+  display: flex;
+  align-items: center;
+  gap: 0.45em;
+}
+.hora-evento::before,
+.hora-evento::after {
+  content: "";
+  width: 1.1em;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+}
+.direccion {
+  font-size: 0.86em;
+  line-height: 1.5;
+  color: var(--texto-suave);
+  margin: 0.8em 0 1.4em;
+  max-width: 20em;
+}
+.evento .boton { padding: 0.9em 1.4em; }
+
+/* ---------- Itinerario ---------- */
+.linea-tiempo {
+  list-style: none;
+  margin: 0.4em 0 0;
+  padding: 0;
+  width: 100%;
+  max-width: 19em;
+  text-align: left;
+}
+.linea-tiempo li {
+  display: grid;
+  grid-template-columns: 5.6em 1.6em 1fr;
+  align-items: center;
+  min-height: 2.9em;
+  position: relative;
+}
+/* la línea vertical que une los puntos */
+.linea-tiempo li::before {
+  content: "";
+  position: absolute;
+  left: calc(5.6em + 0.8em - 0.5px);
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(220, 200, 166, 0.35);
+}
+.linea-tiempo li:first-child::before { top: 50%; }
+.linea-tiempo li:last-child::before { bottom: 50%; }
+.lt-hora {
+  font-family: var(--letra-titulos);
+  font-size: 1.08em;
+  text-align: right;
+  color: var(--acento-claro);
+  padding-right: 0.2em;
+}
+.lt-punto {
+  justify-self: center;
+  width: 0.55em;
+  height: 0.55em;
+  border-radius: 50%;
+  border: 1px solid var(--acento-claro);
+  background: var(--oscuro);
+  position: relative;
+  z-index: 1;
+}
+.lt-que { font-size: 0.95em; letter-spacing: 0.02em; }
+
+/* ---------- Regalos ---------- */
+.mesas { display: grid; gap: 0.8em; width: 100%; margin-top: 1.4em; }
+.mesa {
+  padding: 1em;
   border: 1px solid var(--linea);
   border-radius: 0.6em;
-  background: rgba(255, 255, 255, 0.5);
 }
-.tarjeta .hora {
-  font-family: var(--letra-titulos);
-  font-size: 1.15em;
+.mesa-tienda { font-family: var(--letra-titulos); font-size: 1.3em; font-weight: 500; }
+.mesa-numero { font-size: 0.85em; color: var(--texto-suave); margin: 0.2em 0 0.8em; }
+
+/* ---------- Ramitas de adorno ---------- */
+.rama {
+  position: absolute;
+  width: 6.5em;
+  height: 6.5em;
   color: var(--acento);
-  margin-top: 0.35em;
+  opacity: 0.55;
+  stroke-width: 1.1;
+  pointer-events: none;
 }
-.tarjeta .lugar {
-  font-family: var(--letra-titulos);
-  font-size: 1.5em;
-  font-weight: 500;
-  line-height: 1.15;
-  margin-top: 0.15em;
-}
-.tarjeta .direccion {
-  font-size: 0.82em;
-  color: var(--texto-suave);
-  margin: 0.4em 0 1em;
-}
-.tarjeta .boton { padding: 0.85em 1.3em; }
+.tema-oscuro .rama { color: var(--acento-claro); opacity: 0.35; }
+.rama.abajo-izq { left: 1.5em; bottom: 1.5em; }
+.rama.arriba-der { right: 1.5em; top: 1.5em; transform: rotate(180deg); }
+.rama.arriba-izq { left: 1.5em; top: 1.5em; transform: scaleY(-1); }
+.rama.abajo-der { right: 1.5em; bottom: 1.5em; transform: scaleX(-1); }
 
 /* ---------- 4. Fotos ---------- */
 .carrusel {

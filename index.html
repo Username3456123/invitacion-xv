@@ -17,16 +17,75 @@
   <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
+  <!-- Dibujos que se repiten (ramitas e íconos) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="rama" viewBox="0 0 120 120">
+      <path d="M8 112C30 92 50 70 64 54S96 22 110 10"/>
+      <path d="M28 90C16 88 10 78 12 68c10 4 16 12 16 22zM28 90c8 8 20 10 28 6-6-8-18-10-28-6z"/>
+      <path d="M52 64c-10-4-14-14-12-24 10 6 14 14 12 24zM52 64c8 8 20 10 28 6-6-8-18-10-28-6z"/>
+      <path d="M78 40c-8-6-10-16-6-24 8 6 10 14 6 24zM78 40c8 6 18 6 24 2-6-8-16-8-24-2z"/>
+      <circle cx="110" cy="10" r="2.2"/>
+    </symbol>
+    <symbol id="icono-templo" viewBox="0 0 64 64">
+      <path d="M32 3v9M28 7h8"/>
+      <path d="M20 26l12-12 12 12"/>
+      <path d="M22 24v34h20V24"/>
+      <path d="M22 34L10 40v18h12M42 34l12 6v18H42"/>
+      <path d="M28 58V48a4 4 0 0 1 8 0v10"/>
+      <circle cx="32" cy="33" r="3.2"/>
+      <path d="M5 58h54"/>
+    </symbol>
+    <symbol id="icono-copas" viewBox="0 0 64 64">
+      <g transform="rotate(-14 22 30)">
+        <path d="M16 12h12l-1.6 15a4.4 4.4 0 0 1-8.8 0z"/>
+        <path d="M22 31.5V48M16 48h12"/>
+        <path d="M17 19h10"/>
+      </g>
+      <g transform="rotate(14 42 30)">
+        <path d="M36 12h12l-1.6 15a4.4 4.4 0 0 1-8.8 0z"/>
+        <path d="M42 31.5V48M36 48h12"/>
+        <path d="M37 19h10"/>
+      </g>
+      <path d="M32 3v5M26 5l2.5 3M38 5l-2.5 3"/>
+    </symbol>
+    <symbol id="icono-sobre" viewBox="0 0 64 64">
+      <rect x="8" y="16" width="48" height="34" rx="3"/>
+      <path d="M8 19l24 18 24-18"/>
+      <path d="M8 50l18-15M56 50L38 35"/>
+      <path d="M32 6c-2-3-7-2-7 2 0 4 7 7 7 7s7-3 7-7c0-4-5-5-7-2z"/>
+    </symbol>
+    <symbol id="icono-mapa" viewBox="0 0 24 24">
+      <path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z"/>
+      <circle cx="12" cy="10" r="2.3"/>
+    </symbol>
+  </svg>
+
   <div class="marco" id="marco" data-tema="claro">
     <main class="app" id="app">
 
-      <!-- 1. Presentación -->
+      <!-- 1. Portada -->
       <section class="pantalla tema-claro portada" id="inicio" data-titulo="Inicio">
         <div class="brillos" aria-hidden="true"></div>
+        <svg class="rama arriba-izq" aria-hidden="true"><use href="#rama"/></svg>
+        <svg class="rama abajo-der" aria-hidden="true"><use href="#rama"/></svg>
         <p class="aparece para-quien" id="invitado" hidden></p>
-        <p class="aparece bendicion" id="bendicion"></p>
+        <div class="aparece arco" id="arco">
+          <img id="foto-portada" alt="">
+          <span class="monograma" id="monograma" aria-hidden="true"></span>
+        </div>
         <p class="aparece etiqueta">Mis XV años</p>
         <h1 class="aparece nombre" data-dato="nombre"></h1>
+        <p class="aparece fecha-corta" data-dato="fecha-corta"></p>
+        <div class="desliza" aria-hidden="true">
+          Desliza
+          <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </section>
+
+      <!-- 2. Mensaje, papás y padrinos -->
+      <section class="pantalla tema-arena" id="mensaje" data-titulo="Bienvenida">
+        <svg class="rama arriba-der" aria-hidden="true"><use href="#rama"/></svg>
+        <p class="aparece bendicion" id="bendicion"></p>
         <div class="aparece adorno" aria-hidden="true"><span></span><i></i><span></span></div>
         <p class="aparece frase" id="frase"></p>
         <div class="aparece familia" id="familia">
@@ -39,16 +98,12 @@
             <p class="nombres-familia" id="padrinos"></p>
           </div>
         </div>
-        <div class="desliza" aria-hidden="true">
-          Desliza
-          <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-        </div>
       </section>
 
-      <!-- 2. Conteo -->
+      <!-- 3. Conteo -->
       <section class="pantalla tema-oscuro" id="conteo" data-titulo="Cuenta regresiva">
         <p class="aparece etiqueta">Cuenta regresiva</p>
-        <h2 class="aparece titulo" id="conteo-titulo">Faltan</h2>
+        <h2 class="aparece titulo" id="conteo-titulo">Falta poco</h2>
         <div class="aparece conteo" id="conteo-numeros" role="timer">
           <div><span class="num" data-u="dias">00</span><span class="lbl">Días</span></div>
           <div><span class="num" data-u="horas">00</span><span class="lbl">Horas</span></div>
@@ -63,15 +118,47 @@
         </a>
       </section>
 
-      <!-- 3. Cuándo y dónde -->
-      <section class="pantalla tema-claro" id="lugares" data-titulo="Cuándo y dónde">
-        <p class="aparece etiqueta">Te espero en</p>
-        <h2 class="aparece titulo">Cuándo y dónde</h2>
-        <div class="lista-eventos" id="eventos"></div>
+      <!-- 4. Ceremonia religiosa -->
+      <section class="pantalla tema-claro evento" id="ceremonia" data-titulo="Ceremonia religiosa">
+        <svg class="rama abajo-izq" aria-hidden="true"><use href="#rama"/></svg>
+        <p class="aparece etiqueta">Ceremonia religiosa</p>
+        <svg class="aparece icono-evento" aria-hidden="true"><use href="#icono-templo"/></svg>
+        <p class="aparece tipo-evento" data-ev="tipo"></p>
+        <h2 class="aparece titulo" data-ev="lugar"></h2>
+        <p class="aparece hora-evento" data-ev="hora"></p>
+        <p class="aparece direccion" data-ev="direccion"></p>
+        <a class="aparece boton secundario" data-ev="mapa" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icono-mapa"/></svg>
+          Cómo llegar
+        </a>
+        <p class="aparece nota" data-ev="nota"></p>
       </section>
 
-      <!-- 4. Fotos -->
-      <section class="pantalla tema-arena" id="galeria" data-titulo="Fotos">
+      <!-- 5. Recepción -->
+      <section class="pantalla tema-arena evento" id="recepcion" data-titulo="Recepción">
+        <svg class="rama arriba-der" aria-hidden="true"><use href="#rama"/></svg>
+        <p class="aparece etiqueta">Recepción</p>
+        <svg class="aparece icono-evento" aria-hidden="true"><use href="#icono-copas"/></svg>
+        <p class="aparece tipo-evento" data-ev="tipo"></p>
+        <h2 class="aparece titulo" data-ev="lugar"></h2>
+        <p class="aparece hora-evento" data-ev="hora"></p>
+        <p class="aparece direccion" data-ev="direccion"></p>
+        <a class="aparece boton secundario" data-ev="mapa" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icono-mapa"/></svg>
+          Cómo llegar
+        </a>
+        <p class="aparece nota" data-ev="nota"></p>
+      </section>
+
+      <!-- 6. Itinerario -->
+      <section class="pantalla tema-oscuro" id="itinerario" data-titulo="Itinerario">
+        <p class="aparece etiqueta">Itinerario</p>
+        <h2 class="aparece titulo">Así será la noche</h2>
+        <ol class="linea-tiempo" id="linea-tiempo"></ol>
+      </section>
+
+      <!-- 7. Fotos -->
+      <section class="pantalla tema-claro" id="galeria" data-titulo="Fotos">
         <p class="aparece etiqueta">Galería</p>
         <h2 class="aparece titulo">Momentos</h2>
         <div class="aparece carrusel" id="carrusel">
@@ -86,15 +173,15 @@
         <div class="aparece puntitos" id="puntitos"></div>
       </section>
 
-      <!-- 5. Quiz -->
+      <!-- 8. Quiz -->
       <section class="pantalla tema-oscuro" id="quiz" data-titulo="Quiz">
         <p class="aparece etiqueta">Quiz</p>
         <h2 class="aparece titulo" id="quiz-titulo"></h2>
         <div class="aparece quiz" id="quiz-caja" aria-live="polite"></div>
       </section>
 
-      <!-- 6. Código de vestimenta -->
-      <section class="pantalla tema-claro" id="vestimenta" data-titulo="Vestimenta">
+      <!-- 9. Código de vestimenta -->
+      <section class="pantalla tema-arena" id="vestimenta" data-titulo="Vestimenta">
         <p class="aparece etiqueta">Código de vestimenta</p>
         <div class="aparece iconos-vestimenta" aria-hidden="true">
           <svg viewBox="0 0 64 64">
@@ -115,7 +202,17 @@
         <div class="aparece reservados" id="reservados"></div>
       </section>
 
-      <!-- 7. Confirmar asistencia -->
+      <!-- 10. Regalos -->
+      <section class="pantalla tema-claro" id="regalos" data-titulo="Regalos">
+        <svg class="rama abajo-der" aria-hidden="true"><use href="#rama"/></svg>
+        <p class="aparece etiqueta">Regalos</p>
+        <svg class="aparece icono-evento" aria-hidden="true"><use href="#icono-sobre"/></svg>
+        <h2 class="aparece titulo">Lluvia de sobres</h2>
+        <p class="aparece texto" id="regalos-texto"></p>
+        <div class="aparece mesas" id="mesas"></div>
+      </section>
+
+      <!-- 11. Confirmar asistencia -->
       <section class="pantalla tema-arena" id="confirmar" data-titulo="Confirmar">
         <p class="aparece etiqueta">R.S.V.P.</p>
         <h2 class="aparece titulo">Confirma tu asistencia</h2>
@@ -160,14 +257,16 @@
         <p class="aparece nota" id="fecha-limite"></p>
       </section>
 
-      <!-- 8. Despedida -->
+      <!-- 12. Despedida -->
       <section class="pantalla tema-oscuro despedida" id="despedida" data-titulo="Te espero">
         <div class="brillos" aria-hidden="true"></div>
+        <svg class="rama arriba-izq" aria-hidden="true"><use href="#rama"/></svg>
+        <svg class="rama abajo-der" aria-hidden="true"><use href="#rama"/></svg>
         <p class="aparece etiqueta">Gracias</p>
         <p class="aparece nombre" data-dato="nombre"></p>
         <div class="aparece adorno" aria-hidden="true"><span></span><i></i><span></span></div>
         <p class="aparece frase" id="despedida-frase"></p>
-        <p class="aparece fecha-corta" id="fecha-corta"></p>
+        <p class="aparece fecha-corta" data-dato="fecha-corta"></p>
       </section>
     </main>
 

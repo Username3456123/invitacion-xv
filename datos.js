@@ -8,11 +8,13 @@
 const INVITACION = {
   // ---------- La quinceañera ----------
   nombre: "Valentina",
+  monograma: "", // letra del sello de la portada; vacío = la primera letra del nombre
 
-  // Frase de arriba (si no la quieres, déjala vacía: "")
+  // Foto de la portada (va dentro del arco). Vacío = sin foto.
+  fotoPortada: "fotos/portada.svg",
+
+  // ---------- Mensaje de bienvenida ----------
   bendicion: "Con la bendición de Dios y el amor de mis padres",
-
-  // Frase principal de la portada
   frase:
     "Hay sueños que se esperan toda la vida. Hoy quiero vivir el mío rodeada de las personas que más quiero.",
 
@@ -22,28 +24,41 @@ const INVITACION = {
 
   // ---------- Fecha (la usa el conteo) ----------
   // Año-mes-día T hora:minutos:segundos y la zona horaria al final.
-  // -06:00 es la hora del centro de México.
+  // Pon la hora en que empieza la ceremonia. -06:00 = hora del centro de México.
   fechaHora: "2027-03-13T18:00:00-06:00",
   zonaHoraria: "America/Mexico_City",
-  duracionHoras: 7, // cuánto dura la fiesta (para "Agregar a mi calendario")
+  duracionHoras: 7, // cuánto dura todo (para "Agregar a mi calendario")
 
-  // ---------- Cuándo y dónde ----------
-  // "mapa" es el enlace de Google Maps. Si lo dejas vacío, se busca la dirección sola.
-  eventos: [
-    {
-      titulo: "Misa de acción de gracias",
-      hora: "6:00 p.m.",
-      lugar: "Parroquia de San Juan",
-      direccion: "Calle Ejemplo 123, Centro",
-      mapa: "",
-    },
-    {
-      titulo: "Recepción",
-      hora: "8:00 p.m.",
-      lugar: "Jardín Los Olivos",
-      direccion: "Av. Ejemplo 456, Col. Jardines",
-      mapa: "",
-    },
+  // ---------- Ceremonia religiosa (va antes de la fiesta) ----------
+  // "mapa" es el enlace de Google Maps. Vacío = se busca la dirección sola.
+  // Si no hay ceremonia, cambia todo el bloque por: ceremonia: null,
+  ceremonia: {
+    tipo: "Misa de acción de gracias",
+    templo: "Parroquia de San Juan Bautista",
+    hora: "6:00 p.m.",
+    direccion: "Calle Ejemplo 123, Centro",
+    mapa: "",
+    nota: "Te pedimos llegar 15 minutos antes.",
+  },
+
+  // ---------- Recepción (la fiesta) ----------
+  recepcion: {
+    lugar: "Jardín Los Olivos",
+    hora: "8:00 p.m.",
+    direccion: "Av. Ejemplo 456, Col. Jardines",
+    mapa: "",
+    nota: "",
+  },
+
+  // ---------- Itinerario de la noche ----------
+  // Si no lo quieres, deja la lista vacía: []
+  itinerario: [
+    { hora: "6:00 p.m.", que: "Misa de acción de gracias" },
+    { hora: "8:00 p.m.", que: "Recepción" },
+    { hora: "9:00 p.m.", que: "Vals" },
+    { hora: "9:30 p.m.", que: "Cena" },
+    { hora: "10:30 p.m.", que: "Baile sorpresa" },
+    { hora: "11:00 p.m.", que: "¡A bailar!" },
   ],
 
   // ---------- Código de vestimenta ----------
@@ -102,6 +117,15 @@ const INVITACION = {
       muchas: "¡Muy bien! Me conoces bastante.",
       pocas: "¡Tenemos mucho de qué platicar en la fiesta!",
     },
+  },
+
+  // ---------- Regalos ----------
+  // Si no quieres esta parte, cambia todo el bloque por: regalos: null,
+  regalos: {
+    texto: "Tu presencia es mi mejor regalo. Si quieres tener un detalle conmigo, habrá lluvia de sobres.",
+    // Mesas de regalos (opcional). Ejemplo:
+    // { tienda: "Nombre de la tienda", numero: "Evento 12345678", enlace: "https://..." }
+    mesas: [],
   },
 
   // ---------- Confirmar asistencia ----------
