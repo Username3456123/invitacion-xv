@@ -28,7 +28,8 @@ Doble clic en `index.html` y se abre en el navegador.
 
 | Quiero cambiar…                         | Archivo                 |
 | --------------------------------------- | ----------------------- |
-| Nombre, frases, papás, padrinos         | `datos.js`              |
+| Nombre, apellidos, frases, papás, padrinos | `datos.js`           |
+| Colores (berenjena o neutral)           | `datos.js` → `paleta`   |
 | Foto de la portada                      | `datos.js` → `fotoPortada` |
 | Fecha y hora (el conteo)                | `datos.js` → `fechaHora` |
 | Templo y hora de la misa                | `datos.js` → `ceremonia` |
@@ -43,7 +44,7 @@ Doble clic en `index.html` y se abre en el navegador.
 | Lo que se ve al mandar el enlace por WhatsApp | `index.html` (las líneas `og:`) |
 
 **Fotos:** guarda las fotos en `fotos/` (de preferencia verticales, JPG) y
-escribe su nombre en `datos.js`, por ejemplo `{ src: "fotos/valentina-1.jpg", texto: "" }`.
+escribe su nombre en `datos.js`, por ejemplo `{ src: "fotos/daniela-1.jpg", texto: "" }`.
 Las que dicen "Foto 1… Foto 5" son de ejemplo.
 
 **Canción:** pon el archivo en `musica/` (MP3) y en `datos.js` escribe

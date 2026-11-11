@@ -260,6 +260,17 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
 }
 .arco.sin-foto .monograma { position: static; transform: none; width: 3.6em; height: 3.6em; font-size: 1.5em; }
 .portada .nombre { margin-top: 0; }
+.portada .arco { height: 34cqh; }
+.portada .rama { width: 5.5em; height: 5.5em; }
+.apellidos {
+  font-family: var(--letra-titulos);
+  font-size: 0.95em;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+  margin-top: 0.1em;
+}
 .portada .fecha-corta { margin-top: 0.9em; color: var(--acento); }
 
 /* ---------- 2. Mensaje ---------- */

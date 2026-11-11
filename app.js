@@ -33,8 +33,13 @@
   if (colorClaro) $("meta[name=theme-color]").content = colorClaro;
 
   /* ---------- Textos ---------- */
+  const nombreCompleto = [D.nombre, D.apellidos].filter(Boolean).join(" ");
   $$("[data-dato=nombre]").forEach((el) => (el.textContent = D.nombre));
-  document.title = `Mis XV años · ${D.nombre}`;
+  $$("[data-dato=apellidos]").forEach((el) => {
+    el.textContent = D.apellidos || "";
+    el.hidden = !D.apellidos;
+  });
+  document.title = `Mis XV años · ${nombreCompleto}`;
   poner("#bendicion", D.bendicion);
   poner("#frase", D.frase);
   poner("#despedida-frase", D.despedida);
@@ -50,7 +55,7 @@
   if (D.fotoPortada) {
     const foto = $("#foto-portada");
     foto.src = D.fotoPortada;
-    foto.alt = `Foto de ${D.nombre}`;
+    foto.alt = `Foto de ${nombreCompleto}`;
   } else {
     $("#arco").classList.add("sin-foto");
   }
@@ -108,7 +113,7 @@
     ].filter(Boolean).join("\n");
     const datos = new URLSearchParams({
       action: "TEMPLATE",
-      text: `XV años de ${D.nombre}`,
+      text: `XV años de ${nombreCompleto}`,
       dates: `${formato(fecha)}/${formato(fin)}`,
       location: [primero.lugar, primero.direccion].filter(Boolean).join(", "),
       details: `${detalles}\n\n${location.href.split("?")[0]}`,
