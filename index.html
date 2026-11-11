@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Mis XV años</title>
+  <meta name="description" content="Estás invitado a mis XV años. Toca para abrir tu invitación.">
+  <meta name="theme-color" content="#f7f3ed">
+  <!-- Lo que se ve al mandar el enlace por WhatsApp -->
+  <meta property="og:title" content="Mis XV años">
+  <meta property="og:description" content="Toca para abrir tu invitación">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div class="marco" id="marco" data-tema="claro">
+    <main class="app" id="app">
+
+      <!-- 1. Presentación -->
+      <section class="pantalla tema-claro portada" id="inicio" data-titulo="Inicio">
+        <div class="brillos" aria-hidden="true"></div>
+        <p class="aparece para-quien" id="invitado" hidden></p>
+        <p class="aparece bendicion" id="bendicion"></p>
+        <p class="aparece etiqueta">Mis XV años</p>
+        <h1 class="aparece nombre" data-dato="nombre"></h1>
+        <div class="aparece adorno" aria-hidden="true"><span></span><i></i><span></span></div>
+        <p class="aparece frase" id="frase"></p>
+        <div class="aparece familia" id="familia">
+          <div id="bloque-padres">
+            <p class="etiqueta">Mis papás</p>
+            <p class="nombres-familia" id="padres"></p>
+          </div>
+          <div id="bloque-padrinos">
+            <p class="etiqueta">Mis padrinos</p>
+            <p class="nombres-familia" id="padrinos"></p>
+          </div>
+        </div>
+        <div class="desliza" aria-hidden="true">
+          Desliza
+          <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </section>
+
+      <!-- 2. Conteo -->
+      <section class="pantalla tema-oscuro" id="conteo" data-titulo="Cuenta regresiva">
+        <p class="aparece etiqueta">Cuenta regresiva</p>
+        <h2 class="aparece titulo" id="conteo-titulo">Faltan</h2>
+        <div class="aparece conteo" id="conteo-numeros" role="timer">
+          <div><span class="num" data-u="dias">00</span><span class="lbl">Días</span></div>
+          <div><span class="num" data-u="horas">00</span><span class="lbl">Horas</span></div>
+          <div><span class="num" data-u="minutos">00</span><span class="lbl">Min</span></div>
+          <div><span class="num" data-u="segundos">00</span><span class="lbl">Seg</span></div>
+        </div>
+        <p class="aparece fecha-larga" id="fecha-larga"></p>
+        <p class="aparece hora-larga" id="hora-larga"></p>
+        <a class="aparece boton" id="calendario" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>
+          Agregar a mi calendario
+        </a>
+      </section>
+
+      <!-- 3. Cuándo y dónde -->
+      <section class="pantalla tema-claro" id="lugares" data-titulo="Cuándo y dónde">
+        <p class="aparece etiqueta">Te espero en</p>
+        <h2 class="aparece titulo">Cuándo y dónde</h2>
+        <div class="lista-eventos" id="eventos"></div>
+      </section>
+
+      <!-- 4. Fotos -->
+      <section class="pantalla tema-arena" id="galeria" data-titulo="Fotos">
+        <p class="aparece etiqueta">Galería</p>
+        <h2 class="aparece titulo">Momentos</h2>
+        <div class="aparece carrusel" id="carrusel">
+          <div class="pista" id="pista"></div>
+          <button class="flecha izq" type="button" aria-label="Foto anterior">
+            <svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>
+          </button>
+          <button class="flecha der" type="button" aria-label="Foto siguiente">
+            <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+        <div class="aparece puntitos" id="puntitos"></div>
+      </section>
+
+      <!-- 5. Quiz -->
+      <section class="pantalla tema-oscuro" id="quiz" data-titulo="Quiz">
+        <p class="aparece etiqueta">Quiz</p>
+        <h2 class="aparece titulo" id="quiz-titulo"></h2>
+        <div class="aparece quiz" id="quiz-caja" aria-live="polite"></div>
+      </section>
+
+      <!-- 6. Código de vestimenta -->
+      <section class="pantalla tema-claro" id="vestimenta" data-titulo="Vestimenta">
+        <p class="aparece etiqueta">Código de vestimenta</p>
+        <div class="aparece iconos-vestimenta" aria-hidden="true">
+          <svg viewBox="0 0 64 64">
+            <path d="M26 6q6 6 12 0"/>
+            <path d="M26 6l-2 8 3 16-15 28h40L37 30l3-16-2-8"/>
+            <path d="M27 30h10"/>
+          </svg>
+          <svg viewBox="0 0 64 64">
+            <path d="M22 8l10 8 10-8 11 7-2 43H13l-2-43z"/>
+            <path d="M22 8l6 24 4-8 4 8 6-24"/>
+            <path d="M32 24v34"/>
+            <path d="M28.5 14.5L32 16l-3.5 1.5zM35.5 14.5L32 16l3.5 1.5z"/>
+            <circle cx="32" cy="38" r=".8"/><circle cx="32" cy="46" r=".8"/>
+          </svg>
+        </div>
+        <h2 class="aparece titulo" id="vestimenta-tipo"></h2>
+        <p class="aparece texto" id="vestimenta-nota"></p>
+        <div class="aparece reservados" id="reservados"></div>
+      </section>
+
+      <!-- 7. Confirmar asistencia -->
+      <section class="pantalla tema-arena" id="confirmar" data-titulo="Confirmar">
+        <p class="aparece etiqueta">R.S.V.P.</p>
+        <h2 class="aparece titulo">Confirma tu asistencia</h2>
+        <p class="aparece texto" id="pases-texto" hidden></p>
+        <form class="aparece formulario" id="formulario" novalidate>
+          <label class="campo">
+            <span class="etiqueta-campo">Tu nombre</span>
+            <input name="nombre" id="rsvp-nombre" maxlength="60" autocomplete="name" placeholder="Nombre y apellido">
+          </label>
+          <p class="error" id="rsvp-error" hidden>Escribe tu nombre para confirmar.</p>
+
+          <fieldset class="campo">
+            <legend class="etiqueta-campo">¿Me acompañas?</legend>
+            <div class="segmentado">
+              <label><input type="radio" name="asiste" value="si" checked><span>Sí, ahí estaré</span></label>
+              <label><input type="radio" name="asiste" value="no"><span>No podré ir</span></label>
+            </div>
+          </fieldset>
+
+          <div class="campo" id="campo-personas">
+            <span class="etiqueta-campo">¿Cuántas personas?</span>
+            <div class="contador">
+              <button type="button" id="menos" aria-label="Una persona menos">−</button>
+              <output id="personas" aria-live="polite">1</output>
+              <button type="button" id="mas" aria-label="Una persona más">+</button>
+              <small id="pases-max"></small>
+            </div>
+          </div>
+
+          <label class="campo">
+            <span class="etiqueta-campo" id="etiqueta-mensaje">Un mensaje (opcional)</span>
+            <textarea name="mensaje" id="rsvp-mensaje" rows="2" maxlength="200" placeholder="Escribe algo bonito…"></textarea>
+          </label>
+
+          <button class="boton ancho" type="submit">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/></svg>
+            Enviar por WhatsApp
+          </button>
+          <p class="nota" id="rsvp-enviado" hidden>Se abrió WhatsApp con tu mensaje. Solo falta que lo envíes.</p>
+        </form>
+        <a class="aparece boton" id="boton-formulario" target="_blank" rel="noopener" hidden>Confirmar asistencia</a>
+        <p class="aparece nota" id="fecha-limite"></p>
+      </section>
+
+      <!-- 8. Despedida -->
+      <section class="pantalla tema-oscuro despedida" id="despedida" data-titulo="Te espero">
+        <div class="brillos" aria-hidden="true"></div>
+        <p class="aparece etiqueta">Gracias</p>
+        <p class="aparece nombre" data-dato="nombre"></p>
+        <div class="aparece adorno" aria-hidden="true"><span></span><i></i><span></span></div>
+        <p class="aparece frase" id="despedida-frase"></p>
+        <p class="aparece fecha-corta" id="fecha-corta"></p>
+      </section>
+    </main>
+
+    <!-- Botón de música -->
+    <button class="boton-musica" id="boton-musica" type="button" aria-label="Pausar música" hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/><path class="tachado" d="M3 3l18 18"/></svg>
+    </button>
+
+    <!-- Puntitos para saltar entre secciones -->
+    <nav class="puntos" id="puntos" aria-label="Secciones" hidden></nav>
+
+    <!-- Sobre que se abre al tocar el sello -->
+    <div class="sobre" id="sobre">
+      <div class="solapa arriba">
+        <p class="para-quien" id="sobre-para" hidden></p>
+        <p class="etiqueta">Mis XV años</p>
+        <p class="nombre" data-dato="nombre"></p>
+      </div>
+      <div class="solapa abajo">
+        <p class="toca">Toca el sello para abrir</p>
+      </div>
+      <button class="sello" id="sello" type="button" aria-label="Abrir invitación"><span>XV</span></button>
+    </div>
+  </div>
+
+  <script src="datos.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

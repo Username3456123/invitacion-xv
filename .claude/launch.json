@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "invitacion",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [".claude/servidor.mjs", ".", "5500"],
+      "port": 5500,
+      "url": "http://127.0.0.1:5500"
+    }
+  ]
+}
