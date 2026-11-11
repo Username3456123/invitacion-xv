@@ -544,6 +544,8 @@ symbol * { vector-effect: non-scaling-stroke; stroke-width: 1.15px; }
 .dibujo.guirnalda { width: 64%; height: auto; aspect-ratio: 4 / 1; }
 .dibujo.flor { width: 4.4em; height: 4.4em; transform: rotate(-12deg); }
 .dibujo.flor.chica { width: 3.3em; height: 3.3em; transform: rotate(14deg); }
+.dibujo.confeti { width: 6.4em; height: 5.3em; }
+.dibujo.confeti.abajo-der { transform: rotate(180deg); }
 .dibujo.mariposa { width: 4.2em; height: 4.2em; transform: rotate(-16deg); }
 .dibujo.mariposa.chica { width: 3em; height: 3em; transform: rotate(18deg); }
 .dibujo.arriba-izq { left: 1.6em; top: 1.6em; }
