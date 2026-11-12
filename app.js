@@ -26,7 +26,7 @@
   const params = new URLSearchParams(location.search);
   const invitado = (params.get("para") || "").trim().slice(0, 60);
   const pasesUrl = parseInt(params.get("pases"), 10);
-  const pasesMax = pasesUrl > 0 ? Math.min(pasesUrl, 30) : Math.max(1, D.confirmar.pasesMaximos || 1);
+  const pasesMax = pasesUrl > 0 ? Math.min(pasesUrl, 30) : 0;
 
   // La barra del navegador del celular toma el color de la paleta
   const colorClaro = getComputedStyle(document.documentElement).getPropertyValue("--claro").trim();
@@ -384,28 +384,11 @@
       b.hidden = false;
     }
   } else {
-    let personas = 1;
-    const salida = $("#personas");
-    const menos = $("#menos");
-    const mas = $("#mas");
     const nombre = $("#rsvp-nombre");
     if (invitado) nombre.value = invitado;
     $("#etiqueta-mensaje").textContent = `Un mensaje para ${D.nombre} (opcional)`;
-    $("#pases-max").textContent = pasesMax > 1 ? `de ${pasesMax}` : "";
-    const pintarPersonas = () => {
-      salida.textContent = personas;
-      menos.disabled = personas <= 1;
-      mas.disabled = personas >= pasesMax;
-    };
-    menos.addEventListener("click", () => { personas = Math.max(1, personas - 1); pintarPersonas(); });
-    mas.addEventListener("click", () => { personas = Math.min(pasesMax, personas + 1); pintarPersonas(); });
-    pintarPersonas();
-    if (pasesMax === 1) $("#campo-personas").hidden = true;
 
     const asiste = () => form.elements.asiste.value === "si";
-    form.addEventListener("change", () => {
-      $("#campo-personas").hidden = !asiste() || pasesMax === 1;
-    });
     nombre.addEventListener("input", () => {
       nombre.closest(".campo").classList.remove("mal");
       $("#rsvp-error").hidden = true;
@@ -422,11 +405,10 @@
       }
       const mensaje = $("#rsvp-mensaje").value.trim();
       const lineas = asiste()
-        ? [
-            `¡Hola! Soy ${quien} y confirmo mi asistencia a los XV años de ${D.nombre}. 🎉`,
-            `Asistiremos: ${personas} ${personas === 1 ? "persona" : "personas"}.`,
-          ]
-        : [`¡Hola! Soy ${quien}. Lamentablemente no podré asistir a los XV años de ${D.nombre}. ¡Muchas felicidades!`];
+        ? [`¡Hola! ${quien} confirma su asistencia a los XV años de ${D.nombre}. 🎉`]
+        : [`¡Hola! ${quien} no podrá asistir a los XV años de ${D.nombre}. ¡Muchas felicidades!`];
+      // Si la invitación trae pases (?pases=4), se dice solo; el invitado no elige cuántos
+      if (asiste() && pasesMax > 0) lineas.push(`Pase para ${pasesMax} ${pasesMax === 1 ? "persona" : "personas"}.`);
       if (mensaje) lineas.push(`Mensaje: ${mensaje}`);
       if (puntajeQuiz) lineas.push(`En el quiz saqué ${puntajeQuiz} 😄`);
       window.open(`https://wa.me/${numero}?text=${encodeURIComponent(lineas.join("\n"))}`, "_blank", "noopener");

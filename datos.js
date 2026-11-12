@@ -72,8 +72,9 @@ const INVITACION = {
     tipo: "Formal casual",
     estilo: "All black", // sale en una etiqueta debajo (vacío = no se pone)
     nota: "Ven vestido de negro de pies a cabeza. El morado es solo para la quinceañera.",
-    // Colores que deben llevar los invitados. Si no hay, deja la lista vacía: []
-    coloresSugeridos: [{ nombre: "Negro", color: "#161216" }],
+    // Colores que deben llevar los invitados (sale "Viste de"). Vacío = no se pone.
+    // Ejemplo: [{ nombre: "Negro", color: "#161216" }]
+    coloresSugeridos: [],
     // Colores que nadie más debe llevar. Si no hay, deja la lista vacía: []
     coloresReservados: [{ nombre: "Morado", color: "#6b2d78" }],
   },
@@ -145,7 +146,8 @@ const INVITACION = {
     // Si prefieres un Formulario de Google, pega aquí su enlace y deja whatsapp vacío: ""
     formulario: "",
     fechaLimite: "1 de marzo",
-    pasesMaximos: 5, // cuántas personas puede confirmar cada invitado
+    // Los invitados no eligen cuántas personas van. Para darle lugares a una
+    // familia, mándale el enlace con pases: ...?para=Familia%20Pérez&pases=4
   },
 
   // ---------- Música de fondo ----------

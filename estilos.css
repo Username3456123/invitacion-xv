@@ -837,26 +837,6 @@ symbol * { vector-effect: non-scaling-stroke; stroke-width: 1.15px; }
 }
 .segmentado input:checked + span { background: var(--oscuro); border-color: var(--oscuro); color: var(--claro); }
 .segmentado input:focus-visible + span { outline: 2px solid var(--acento); outline-offset: 2px; }
-.contador { display: flex; align-items: center; gap: 0.9em; }
-.contador button {
-  width: 2.3em;
-  height: 2.3em;
-  border: 1px solid color-mix(in srgb, var(--oscuro) 30%, transparent);
-  border-radius: 50%;
-  background: transparent;
-  font-size: 1.05em;
-  line-height: 1;
-  cursor: pointer;
-}
-.contador button:disabled { opacity: 0.3; cursor: default; }
-.contador output {
-  min-width: 1.5em;
-  text-align: center;
-  font-family: var(--letra-titulos);
-  font-size: 1.7em;
-  font-weight: 500;
-}
-.contador small { font-size: 0.78em; color: var(--texto-suave); }
 .formulario .boton { margin-top: 0.3em; }
 .formulario .nota { text-align: center; color: var(--oscuro); }
 
