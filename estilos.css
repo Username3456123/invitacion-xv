@@ -902,6 +902,44 @@ symbol * { vector-effect: non-scaling-stroke; stroke-width: 1.15px; }
   0%, 100% { transform: rotate(-8deg); }
   50% { transform: rotate(8deg); }
 }
+.boton-musica.spotify .tachado { display: none; }
+
+/* Reproductor de Spotify: recuadro arriba que se esconde sin cortar la canción */
+.panel-musica {
+  position: absolute;
+  top: calc(1.2em + env(safe-area-inset-top));
+  left: 1.2em;
+  right: 1.2em;
+  z-index: 15;
+  padding: 0.4em;
+  border: 1px solid var(--linea);
+  border-radius: 1em;
+  background: color-mix(in srgb, var(--claro) 92%, transparent);
+  box-shadow: 0 16px 36px -22px color-mix(in srgb, var(--oscuro) 60%, transparent);
+  backdrop-filter: blur(6px);
+  transform: translateY(-140%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.5s ease, opacity 0.4s ease;
+}
+.panel-musica.abierto { transform: none; opacity: 1; pointer-events: auto; }
+.panel-musica iframe { display: block; width: 100%; height: 80px; border: 0; border-radius: 12px; }
+.cerrar-musica {
+  position: absolute;
+  top: -0.7em;
+  right: -0.5em;
+  width: 1.8em;
+  height: 1.8em;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--linea);
+  border-radius: 50%;
+  background: var(--claro);
+  color: var(--oscuro);
+  font-size: 0.95em;
+  line-height: 1;
+  cursor: pointer;
+}
 .marco[data-tema="oscuro"] .boton-musica { background: color-mix(in srgb, var(--oscuro) 60%, transparent); color: var(--en-oscuro); }
 
 /* ---------- Puntitos de secciones ---------- */

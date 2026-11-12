@@ -424,6 +424,36 @@
   const Musica = (() => {
     const modo = D.musica;
     const boton = $("#boton-musica");
+
+    // Canción de Spotify: su reproductor oficial en un recuadro arriba.
+    // Spotify no deja que suene sola: el invitado le da play.
+    const pista = /open\.spotify\.com\/(?:intl-[a-z-]+\/)?track\/([A-Za-z0-9]+)/.exec(modo || "");
+    if (pista) {
+      const panel = $("#panel-musica");
+      const marcoSpotify = $("#spotify");
+      boton.classList.add("spotify");
+      boton.setAttribute("aria-label", "Mostrar la canción");
+      const mostrar = () => {
+        panel.hidden = false;
+        requestAnimationFrame(() => panel.classList.add("abierto"));
+        boton.hidden = true;
+      };
+      const ocultar = () => {
+        if (!panel.classList.contains("abierto")) return;
+        panel.classList.remove("abierto"); // se esconde, pero la canción sigue sonando
+        boton.hidden = false;
+      };
+      boton.addEventListener("click", mostrar);
+      $("#cerrar-musica").addEventListener("click", ocultar);
+      return {
+        iniciar() {
+          marcoSpotify.src = `https://open.spotify.com/embed/track/${pista[1]}?utm_source=generator&theme=0`;
+          mostrar();
+        },
+        alSalirDeLaPortada: ocultar,
+      };
+    }
+
     let audio = null;
     let ctx = null;
     let encendida = false; // lo que eligió la persona
@@ -530,7 +560,7 @@
       if (!encendida) return;
       document.hidden ? callar() : sonar();
     });
-    return { iniciar };
+    return { iniciar, alSalirDeLaPortada() {} };
   })();
 
   /* ---------- Brillitos ---------- */
@@ -569,6 +599,7 @@
           const n = vivas.indexOf(e.target);
           botonesNav.forEach((b, i) => b.classList.toggle("activo", i === n));
           marco.dataset.tema = e.target.classList.contains("tema-oscuro") ? "oscuro" : "claro";
+          if (e.target.id !== "inicio") Musica.alSalirDeLaPortada();
         });
       },
       { root: app, threshold: [0, 0.5] }

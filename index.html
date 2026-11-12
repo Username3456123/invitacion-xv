@@ -369,6 +369,12 @@
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/><path class="tachado" d="M3 3l18 18"/></svg>
     </button>
 
+    <!-- Reproductor de Spotify (sale al abrir el sobre; la notita musical lo vuelve a mostrar) -->
+    <div class="panel-musica" id="panel-musica" hidden>
+      <iframe id="spotify" title="Nuestra canción en Spotify" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+      <button class="cerrar-musica" id="cerrar-musica" type="button" aria-label="Ocultar el reproductor (la canción sigue sonando)">×</button>
+    </div>
+
     <!-- Puntitos para saltar entre secciones -->
     <nav class="puntos" id="puntos" aria-label="Secciones" hidden></nav>
 

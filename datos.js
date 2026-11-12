@@ -154,10 +154,11 @@ const INVITACION = {
     // familia, mándale el enlace con pases: ...?para=Familia%20Pérez&pases=4
   },
 
-  // ---------- Música de fondo ----------
-  // "demo" = melodía de prueba. Para tu canción: "musica/cancion.mp3".
-  // Para no poner música: ""
-  musica: "demo",
+  // ---------- Música ----------
+  // Enlace de una canción de Spotify: sale su reproductor al abrir el sobre
+  // (el invitado le da play; sin sesión de Spotify suenan unos 30 segundos).
+  // "demo" = melodía de prueba que suena sola. "" = sin música.
+  musica: "https://open.spotify.com/track/3N6DfoGuSb8Kv6rydxpJi7", // Tears On My Pillow (Grease)
 
   // ---------- Despedida ----------
   despedida: "¡Te espero para celebrar juntos este día tan especial!",
