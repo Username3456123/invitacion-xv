@@ -26,46 +26,44 @@ const INVITACION = {
     "Hay sueños que se esperan toda la vida. Hoy quiero vivir el mío rodeada de las personas que más quiero.",
 
   // Un nombre por línea. Si no van, deja la lista vacía: []
-  padres: ["Carlos Ramírez", "Ana López"],
-  padrinos: ["Jorge Méndez", "Laura Torres"],
+  padres: ["Guillermo García Osorio", "Gabriela Padilla Villalobos"],
+  padrinos: ["Renata García Padilla"],
+  padrinosTitulo: "Mi madrina", // "Mis padrinos", "Mi madrina", "Mi padrino"…
 
   // ---------- Fecha (la usa el conteo) ----------
   // Año-mes-día T hora:minutos:segundos y la zona horaria al final.
   // Pon la hora en que empieza la ceremonia. -06:00 = hora del centro de México.
-  fechaHora: "2027-03-13T18:00:00-06:00",
+  fechaHora: "2027-04-10T17:00:00-06:00", // sábado 10 de abril de 2027, 5:00 p.m.
   zonaHoraria: "America/Mexico_City",
-  duracionHoras: 7, // cuánto dura todo (para "Agregar a mi calendario")
+  duracionHoras: 9, // cuánto dura todo (para "Agregar a mi calendario"): de 5 p.m. a 2 a.m.
 
   // ---------- Ceremonia religiosa (va antes de la fiesta) ----------
   // "mapa" es el enlace de Google Maps. Vacío = se busca la dirección sola.
   // Si no hay ceremonia, cambia todo el bloque por: ceremonia: null,
   ceremonia: {
     tipo: "Misa de acción de gracias",
-    templo: "Parroquia de San Juan Bautista",
-    hora: "6:00 p.m.",
-    direccion: "Calle Ejemplo 123, Centro",
-    mapa: "",
+    templo: "Parroquia Corpus Christi",
+    hora: "5:00 p.m.",
+    direccion: "Av. Manuel Jesús Clouthier 525, Prados Guadalupe, Zapopan",
+    mapa: "https://www.google.com/maps/dir//Corpus+Cristi,+Av+Manuel+J.+Clouthier+525,+Col,+Prados+Guadalupe,+45020+Zapopan,+Jal./@20.6651031,-103.4324079,13z/data=!4m7!4m6!1m1!4e2!1m2!1m1!1s0x8428ae900678f73d:0x614d213629dbcae!3e0",
     nota: "Te pedimos llegar 15 minutos antes.",
   },
 
   // ---------- Recepción (la fiesta) ----------
   recepcion: {
-    lugar: "Jardín Los Olivos",
-    hora: "8:00 p.m.",
-    direccion: "Av. Ejemplo 456, Col. Jardines",
-    mapa: "",
+    lugar: "Monet Salón de Eventos",
+    hora: "7:00 p.m.",
+    direccion: "Anillo Periférico Pte. Manuel Gómez Morín 3000, Paraísos del Colli, Zapopan",
+    mapa: "https://www.google.com/maps/dir//Av.+Perif.+Pte.+Manuel+G%C3%B3mez+Morin+3000,+Para%C3%ADsos+del+Colli,+45069+Zapopan,+Jal./data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x8428ad0d86ce9bc5:0xf62b048d4169047b",
     nota: "",
   },
 
   // ---------- Itinerario de la noche ----------
+  // Agrega más momentos con su hora, por ejemplo: { hora: "9:00 p.m.", que: "Vals" },
   // Si no lo quieres, deja la lista vacía: []
   itinerario: [
-    { hora: "6:00 p.m.", que: "Misa de acción de gracias" },
-    { hora: "8:00 p.m.", que: "Recepción" },
-    { hora: "9:00 p.m.", que: "Vals" },
-    { hora: "9:30 p.m.", que: "Cena" },
-    { hora: "10:30 p.m.", que: "Baile sorpresa" },
-    { hora: "11:00 p.m.", que: "¡A bailar!" },
+    { hora: "5:00 p.m.", que: "Misa de acción de gracias" },
+    { hora: "7:00 p.m.", que: "Recepción" },
   ],
 
   // ---------- Código de vestimenta ----------

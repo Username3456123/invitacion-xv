@@ -69,6 +69,7 @@
   }
   nombresEnLineas($("#padres"), D.padres);
   nombresEnLineas($("#padrinos"), D.padrinos);
+  $("#titulo-padrinos").textContent = D.padrinosTitulo || "Mis padrinos";
   $("#bloque-padres").hidden = !(D.padres || []).length;
   $("#bloque-padrinos").hidden = !(D.padrinos || []).length;
   const bloques = [D.padres, D.padrinos].filter((l) => (l || []).length).length;
