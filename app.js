@@ -296,9 +296,12 @@
     barra.append(relleno);
     caja.append(barra);
     caja.append(crear("p", "quiz-pregunta", p.pregunta));
-    const botones = p.opciones.map((texto, n) => {
+    // Las respuestas salen en orden revuelto cada vez, para que no se adivine por la letra
+    const revueltas = [...p.opciones].sort(() => Math.random() - 0.5);
+    const botones = revueltas.map((texto, n) => {
       const b = crear("button", "opcion");
       b.type = "button";
+      b.dataset.texto = texto;
       b.append(crear("span", "letra", "ABCDEF"[n]), crear("span", "", texto));
       b.addEventListener("click", () => quizResponder(b, texto, botones, p));
       caja.append(b);
@@ -308,9 +311,9 @@
   }
   function quizResponder(boton, texto, botones, p) {
     const bien = limpiar(texto) === limpiar(p.correcta);
-    botones.forEach((b, n) => {
+    botones.forEach((b) => {
       b.disabled = true;
-      if (limpiar(p.opciones[n]) === limpiar(p.correcta)) b.classList.add("correcta");
+      if (limpiar(b.dataset.texto) === limpiar(p.correcta)) b.classList.add("correcta");
     });
     if (bien) aciertos++;
     else boton.classList.add("incorrecta");

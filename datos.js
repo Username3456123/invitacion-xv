@@ -96,29 +96,29 @@ const INVITACION = {
     intro: "Responde estas preguntas y descubre qué tanto sabes de mí.",
     preguntas: [
       {
-        pregunta: "¿Cuál es mi color favorito?",
-        opciones: ["Azul", "Rosa", "Verde", "Morado"],
-        correcta: "Rosa",
+        pregunta: "¿Cuál es mi musical favorito?",
+        opciones: ["Grease", "Mamma Mia", "Wicked", "High School Musical"],
+        correcta: "Grease",
       },
       {
         pregunta: "¿Cuál es mi comida favorita?",
-        opciones: ["Pizza", "Sushi", "Tacos", "Pasta"],
-        correcta: "Sushi",
+        opciones: ["Pizza hawaiana", "Sushi empanizado", "Papa rellena de pastor", "Espagueti a la boloñesa"],
+        correcta: "Papa rellena de pastor",
       },
       {
-        pregunta: "¿Qué me gusta hacer en mi tiempo libre?",
-        opciones: ["Bailar", "Leer", "Dibujar", "Jugar videojuegos"],
-        correcta: "Bailar",
+        pregunta: "Algo que hacía y casi nadie sabe…",
+        opciones: ["Jugué tenis", "Fui monaguilla", "Estuve en banda de guerra", "Escribía canciones"],
+        correcta: "Estuve en banda de guerra",
       },
       {
-        pregunta: "¿Qué animal me encanta?",
-        opciones: ["Perros", "Gatos", "Caballos", "Pandas"],
-        correcta: "Gatos",
+        pregunta: "¿Qué número de jersey usé en la primaria?",
+        opciones: ["10", "29", "12", "4"],
+        correcta: "10",
       },
       {
-        pregunta: "¿A dónde me gustaría viajar?",
-        opciones: ["París", "Tokio", "Nueva York", "Cancún"],
-        correcta: "París",
+        pregunta: "¿Quién es mi cantante favorito?",
+        opciones: ["Luis Miguel", "Benny Ibarra", "Britney Spears", "Lady Gaga"],
+        correcta: "Luis Miguel",
       },
     ],
     resultados: {
