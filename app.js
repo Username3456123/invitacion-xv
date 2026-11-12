@@ -175,6 +175,14 @@
   pintarEvento("ceremonia", D.ceremonia, D.ceremonia && D.ceremonia.templo);
   pintarEvento("recepcion", D.recepcion, D.recepcion && D.recepcion.lugar);
 
+  // Boleto VIP: con un enlace con pases (?pases=4) dice "Admite 4"
+  const admite = $("#boleto-admite");
+  if (admite) {
+    admite.textContent = pasesUrl > 0
+      ? `Admite ${pasesMax} ${pasesMax === 1 ? "persona" : "personas"}`
+      : "Invitación especial";
+  }
+
   /* ---------- Itinerario ---------- */
   const itinerario = D.itinerario || [];
   if (itinerario.length) {

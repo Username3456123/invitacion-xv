@@ -62,16 +62,6 @@
       <path d="M8 50l18-15M56 50L38 35"/>
       <path d="M32 6c-2-3-7-2-7 2 0 4 7 7 7 7s7-3 7-7c0-4-5-5-7-2z"/>
     </symbol>
-    <!-- Eucalipto: tallo con hojas redondas -->
-    <symbol id="eucalipto" viewBox="0 0 120 120">
-      <path d="M10 112C38 88 62 58 108 12"/>
-      <circle cx="20.8" cy="91.1" r="7"/><circle cx="32.2" cy="102.5" r="6.5"/>
-      <circle cx="37.6" cy="74" r="6.5"/><circle cx="49" cy="85.4" r="6"/>
-      <circle cx="56" cy="54.5" r="6"/><circle cx="67.4" cy="65.9" r="5.5"/>
-      <circle cx="77.6" cy="32.6" r="5"/><circle cx="88" cy="43" r="4.5"/>
-      <circle cx="91" cy="21.5" r="3.6"/><circle cx="98.6" cy="29.1" r="3.2"/>
-      <circle cx="108" cy="12" r="2.5"/>
-    </symbol>
     <!-- Chispas de confeti: rombitos, puntos y una chispa -->
     <symbol id="confeti" viewBox="0 0 60 50">
       <path d="M22 19l3 3-3 3-3-3z"/>
@@ -134,15 +124,6 @@
       <circle cx="30" cy="26" r="2.6"/>
       <path d="M30 37c0 7-2 12-6 17"/>
       <path d="M28 46c-6-2-10 0-12 4 5 1 9 0 12-4z"/>
-    </symbol>
-    <!-- Guirnalda de luces -->
-    <symbol id="guirnalda" viewBox="0 0 200 50">
-      <path d="M2 6Q51 38 100 12Q149 38 198 6"/>
-      <path d="M26.5 18.4v3M51 23.5v3M75.5 21.4v3M100 12v3M124.5 21.4v3M149 23.5v3M173.5 18.4v3"/>
-      <circle cx="26.5" cy="24" r="2.6"/><circle cx="51" cy="29.1" r="2.6"/>
-      <circle cx="75.5" cy="27" r="2.6"/><circle cx="100" cy="17.6" r="2.6"/>
-      <circle cx="124.5" cy="27" r="2.6"/><circle cx="149" cy="29.1" r="2.6"/>
-      <circle cx="173.5" cy="24" r="2.6"/>
     </symbol>
     <!-- Destello (una estrella sola) -->
     <symbol id="destello" viewBox="0 0 40 40">
@@ -235,19 +216,29 @@
 
       <!-- 5. Recepción -->
       <section class="pantalla tema-claro evento" id="recepcion" data-titulo="Recepción">
-        <svg class="dibujo guirnalda arriba-centro" aria-hidden="true"><use href="#guirnalda"/></svg>
-        <div class="aparece tarjeta-evento">
-          <p class="etiqueta">Recepción</p>
-          <svg class="icono-evento" aria-hidden="true"><use href="#icono-copas"/></svg>
-          <p class="hora-evento" data-ev="hora"></p>
-          <h2 class="titulo" data-ev="lugar"></h2>
-          <p class="tipo-evento" data-ev="tipo"></p>
-          <p class="direccion" data-ev="direccion"></p>
-          <a class="boton" data-ev="mapa" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icono-mapa"/></svg>
-            Cómo llegar
-          </a>
-          <p class="nota" data-ev="nota"></p>
+        <!-- Boleto VIP: arriba el pase, una línea para cortar y abajo los datos de la fiesta -->
+        <div class="aparece boleto">
+          <div class="boleto-arriba">
+            <p class="boleto-titulo">Pase VIP</p>
+            <p class="boleto-admite" id="boleto-admite"></p>
+            <p class="boleto-xv">XV · <span data-dato="nombre"></span></p>
+          </div>
+          <div class="boleto-corte" aria-hidden="true"></div>
+          <div class="boleto-abajo">
+            <svg class="icono-evento" aria-hidden="true"><use href="#icono-copas"/></svg>
+            <p class="etiqueta">Recepción</p>
+            <p class="hora-evento" data-ev="hora"></p>
+            <h2 class="titulo" data-ev="lugar"></h2>
+            <p class="tipo-evento" data-ev="tipo"></p>
+            <p class="direccion" data-ev="direccion"></p>
+            <a class="boton" data-ev="mapa" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icono-mapa"/></svg>
+              Cómo llegar
+            </a>
+            <p class="nota" data-ev="nota"></p>
+            <div class="codigo-barras" aria-hidden="true"></div>
+            <p class="boleto-codigo" data-dato="fecha-corta"></p>
+          </div>
         </div>
       </section>
 

@@ -438,23 +438,77 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
 }
 .evento .boton { padding: 0.9em 1.4em; }
 
-/* Recepción: tarjeta clara con borde plateado y la hora primero */
-.tarjeta-evento {
+/* Recepción: boleto VIP (pase arriba, línea para cortar y datos abajo) */
+.boleto {
+  position: relative;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1.7em 1.3em 1.5em;
+  max-width: 19em;
   border: 1px solid var(--linea);
-  border-radius: 1em;
-  background: color-mix(in srgb, #ffffff 75%, transparent);
+  border-radius: 0.9em;
+  background: color-mix(in srgb, #ffffff 80%, transparent);
   box-shadow: 0 22px 44px -30px color-mix(in srgb, var(--oscuro) 55%, transparent);
 }
-.tarjeta-evento .icono-evento { width: 3.4em; height: 3.4em; margin: 0.8em 0 0.7em; }
-.tarjeta-evento .hora-evento { font-size: 2.7em; }
-.tarjeta-evento .titulo { font-size: 1.85em; margin: 0.35em 0 0.15em; }
-.tarjeta-evento .direccion { margin: 0.6em 0 1.2em; }
-.tarjeta-evento .nota { margin-top: 0.9em; }
+.boleto-arriba { padding: 1.3em 1.2em 1.15em; }
+.boleto-titulo {
+  font-family: var(--letra-titulos);
+  font-size: 1.95em;
+  font-weight: 500;
+  line-height: 1.1;
+}
+.boleto-admite {
+  margin-top: 0.45em;
+  font-size: 0.68em;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--acento);
+}
+.boleto-xv {
+  margin-top: 0.45em;
+  font-family: var(--letra-titulos);
+  font-style: italic;
+  font-size: 1.1em;
+  color: var(--texto-suave);
+}
+/* línea punteada con una muesca redonda a cada lado */
+.boleto-corte { position: relative; margin: 0 1.1em; border-top: 1px dashed var(--linea); }
+.boleto-corte::before,
+.boleto-corte::after {
+  content: "";
+  position: absolute;
+  top: -0.7em;
+  width: 1.4em;
+  height: 1.4em;
+  border: 1px solid var(--linea);
+  border-radius: 50%;
+  background: var(--claro);
+}
+.boleto-corte::before { left: -1.8em; clip-path: inset(0 0 0 50%); }
+.boleto-corte::after { right: -1.8em; clip-path: inset(0 50% 0 0); }
+.boleto-abajo { display: flex; flex-direction: column; align-items: center; padding: 1.25em 1.2em 1.3em; }
+.boleto .icono-evento { width: 2.7em; height: 2.7em; margin: 0 0 0.45em; }
+.boleto .hora-evento { font-size: 2.4em; margin-top: 0.2em; white-space: nowrap; }
+.boleto .hora-evento::before,
+.boleto .hora-evento::after { width: 0.7em; }
+.boleto .titulo { font-size: 1.7em; margin: 0.3em 0 0.1em; }
+.boleto .direccion { margin: 0.5em 0 1.1em; }
+.boleto .nota { margin-top: 0.8em; }
+/* código de barras de adorno */
+.codigo-barras {
+  width: 9.5em;
+  height: 1.9em;
+  margin-top: 1.3em;
+  opacity: 0.7;
+  background: repeating-linear-gradient(90deg,
+    var(--oscuro) 0 2px, transparent 2px 4px, var(--oscuro) 4px 5px, transparent 5px 8px,
+    var(--oscuro) 8px 11px, transparent 11px 12px, var(--oscuro) 12px 13px, transparent 13px 16px);
+}
+.boleto-codigo {
+  margin-top: 0.4em;
+  font-size: 0.62em;
+  letter-spacing: 0.3em;
+  color: var(--texto-suave);
+}
 
 /* ---------- Itinerario ---------- */
 .linea-tiempo {
@@ -541,7 +595,6 @@ symbol * { vector-effect: non-scaling-stroke; stroke-width: 1.15px; }
 .dibujo.mini { width: 2.4em; height: 2.4em; }
 .dibujo.ancho { width: 6.4em; height: 3.4em; }          /* moño */
 .dibujo.ancho.bajo { width: 7em; height: 2.35em; }       /* hojitas */
-.dibujo.guirnalda { width: 64%; height: auto; aspect-ratio: 4 / 1; }
 .dibujo.flor { width: 4.4em; height: 4.4em; transform: rotate(-12deg); }
 .dibujo.flor.chica { width: 3.3em; height: 3.3em; transform: rotate(14deg); }
 .dibujo.confeti { width: 6.4em; height: 5.3em; }
