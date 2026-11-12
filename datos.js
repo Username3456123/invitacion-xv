@@ -142,7 +142,7 @@ const INVITACION = {
   confirmar: {
     // Número de WhatsApp que recibe las confirmaciones: lada del país + número,
     // sin espacios ni "+" (52 = México). OJO: este número se verá en la página.
-    whatsapp: "5215500000000",
+    whatsapp: "5215500000000", // número temporal
     // Si prefieres un Formulario de Google, pega aquí su enlace y deja whatsapp vacío: ""
     formulario: "",
     fechaLimite: "1 de marzo",
