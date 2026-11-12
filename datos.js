@@ -10,7 +10,7 @@ const INVITACION = {
   // "neutral" (crema y dorado), "berenjena" (plateado y morado berenjena)
   // o "vestido" (morado del vestido, lavanda y dorado tornasol).
   // Para probar otra sin cambiar esta, agrega al enlace: ?paleta=berenjena
-  paleta: "berenjena",
+  paleta: "vestido",
 
   // ---------- La quinceañera ----------
   nombre: "Daniela",            // va grande, en letra manuscrita
