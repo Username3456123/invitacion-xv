@@ -310,19 +310,27 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
   margin-bottom: 1.4em;
   color: var(--texto-suave);
 }
+/* Papás y padrinos: uno debajo del otro, centrados, con una línea fina entre ellos */
 .familia {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  margin-top: 1.8em;
+  margin-top: 1.9em;
 }
-.familia.uno { grid-template-columns: 1fr; }
+.familia > div:not([hidden]) ~ div:not([hidden])::before {
+  content: "";
+  display: block;
+  width: 2.6em;
+  height: 1px;
+  margin: 1.1em auto 1.1em;
+  background: var(--linea);
+}
 .nombres-familia {
   font-family: var(--letra-titulos);
-  font-size: 1.05em;
-  line-height: 1.35;
-  margin-top: 0.45em;
+  font-size: 1.15em;
+  line-height: 1.4;
+  margin-top: 0.4em;
 }
 .desliza {
   position: absolute;
