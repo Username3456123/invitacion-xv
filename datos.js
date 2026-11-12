@@ -7,7 +7,8 @@
 
 const INVITACION = {
   // ---------- Colores ----------
-  // "neutral" (crema y dorado) o "berenjena" (plateado y morado berenjena).
+  // "neutral" (crema y dorado), "berenjena" (plateado y morado berenjena)
+  // o "vestido" (morado del vestido, lavanda y dorado tornasol).
   // Para probar otra sin cambiar esta, agrega al enlace: ?paleta=berenjena
   paleta: "berenjena",
 
@@ -76,7 +77,7 @@ const INVITACION = {
     // Ejemplo: [{ nombre: "Negro", color: "#161216" }]
     coloresSugeridos: [],
     // Colores que nadie más debe llevar. Si no hay, deja la lista vacía: []
-    coloresReservados: [{ nombre: "Morado", color: "#6b2d78" }],
+    coloresReservados: [{ nombre: "Morado", color: "#56298c" }], // el morado de su vestido
   },
 
   // ---------- Fotos del carrusel ----------
