@@ -8,7 +8,7 @@
 const INVITACION = {
   // ---------- Colores ----------
   // "neutral" (crema y dorado), "berenjena" (plateado y morado berenjena)
-  // o "vestido" (morado del vestido, lavanda y dorado tornasol).
+  // o "vestido" (morado del vestido, lavanda y plateado).
   // Para probar otra sin cambiar esta, agrega al enlace: ?paleta=berenjena
   paleta: "vestido",
 

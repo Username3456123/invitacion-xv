@@ -45,29 +45,23 @@
   --sello-texto: var(--oscuro);
 }
 
-/* Paleta del vestido de la quinceañera: morado violeta del tul, lavanda,
-   dorado champaña de los bordados y un toque tornasol como sus lentejuelas */
+/* Paleta del vestido de la quinceañera: morado violeta del tul y lavanda,
+   con plateado como su joyería y el sello gris perla */
 :root[data-paleta="vestido"] {
   --claro: #f8f4fc;        /* blanco lavanda */
   --arena: #eee6f7;        /* lavanda */
   --oscuro: #35185e;       /* morado violeta del vestido */
   --texto-suave: #675a7a;
   --en-oscuro: #f7f2fd;
-  --acento: #7b5d2e;       /* dorado de los bordados (oscuro, para leerse en claro) */
-  --acento-claro: #e4c98e; /* dorado champaña (sobre el morado) */
+  --acento: #676176;       /* plata oscura (para leerse sobre lavanda) */
+  --acento-claro: #d3d0db; /* plata (sobre el morado) */
   --error: #b04a5a;
   --afuera: #cdc0dd;
   --afuera-luz: #efe8f7;
-  --sello-luz: #fff8e8;
-  --sello: #dcbd7c;
-  --sello-sombra: #8d6c35;
+  --sello-luz: #ffffff;    /* sello gris perla */
+  --sello: #c8c5ce;
+  --sello-sombra: #87828f;
   --sello-texto: var(--oscuro);
-}
-/* El sello brilla tornasol, como las lentejuelas del vestido */
-:root[data-paleta="vestido"] .sello {
-  background:
-    radial-gradient(circle at 32% 28%, rgba(255, 250, 235, 0.95), transparent 42%),
-    linear-gradient(135deg, #e6c47c 0%, #eaa9c6 35%, #9fd4c6 62%, #c4a5ea 82%, #dcbd7c 100%);
 }
 
 /* ---------- Base ---------- */
