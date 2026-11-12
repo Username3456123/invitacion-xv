@@ -41,7 +41,7 @@ const INVITACION = {
   // "mapa" es el enlace de Google Maps. Vacío = se busca la dirección sola.
   // Si no hay ceremonia, cambia todo el bloque por: ceremonia: null,
   ceremonia: {
-    tipo: "Misa de acción de gracias",
+    tipo: "", // línea extra bajo el título (vacío = no se pone; el título ya dice "Ceremonia religiosa")
     templo: "Parroquia Corpus Christi",
     hora: "5:00 p.m.",
     direccion: "Av. Manuel Jesús Clouthier 525, Prados Guadalupe, Zapopan",
@@ -59,11 +59,16 @@ const INVITACION = {
   },
 
   // ---------- Itinerario de la noche ----------
-  // Agrega más momentos con su hora, por ejemplo: { hora: "9:00 p.m.", que: "Vals" },
+  // Los dos primeros son reales; los demás son de ejemplo (cámbialos por los horarios reales).
   // Si no lo quieres, deja la lista vacía: []
   itinerario: [
-    { hora: "5:00 p.m.", que: "Misa de acción de gracias" },
+    { hora: "5:00 p.m.", que: "Ceremonia religiosa" },
     { hora: "7:00 p.m.", que: "Recepción" },
+    { hora: "8:30 p.m.", que: "Entrada y vals" },
+    { hora: "9:00 p.m.", que: "Cena" },
+    { hora: "10:00 p.m.", que: "Brindis" },
+    { hora: "10:30 p.m.", que: "Baile sorpresa" },
+    { hora: "11:00 p.m.", que: "¡A bailar!" },
   ],
 
   // ---------- Código de vestimenta ----------
