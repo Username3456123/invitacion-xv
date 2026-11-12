@@ -155,10 +155,12 @@ const INVITACION = {
   },
 
   // ---------- Música ----------
-  // Enlace de una canción de Spotify: sale su reproductor al abrir el sobre
-  // (el invitado le da play; sin sesión de Spotify suenan unos 30 segundos).
-  // "demo" = melodía de prueba que suena sola. "" = sin música.
-  musica: "https://open.spotify.com/track/3N6DfoGuSb8Kv6rydxpJi7", // Tears On My Pillow (Grease)
+  // Enlace de YouTube: sale la pantalla "Nuestra canción" con su reproductor
+  // (canción completa para todos; el invitado le da play).
+  // También sirve un enlace de Spotify (sin sesión solo suenan 30 segundos),
+  // "demo" (melodía de prueba que suena sola) o "" (sin música).
+  musica: "https://www.youtube.com/watch?v=jQTJXsJLKQ4", // versión oficial (canal Sha-Na-Na - Topic)
+  cancion: { titulo: "Tears On My Pillow", artista: "Sha Na Na · Grease" },
 
   // ---------- Despedida ----------
   despedida: "¡Te espero para celebrar juntos este día tan especial!",

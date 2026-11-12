@@ -47,13 +47,15 @@ Doble clic en `index.html` y se abre en el navegador.
 escribe su nombre en `datos.js`, por ejemplo `{ src: "fotos/daniela-1.jpg", texto: "" }`.
 Las que dicen "Foto 1… Foto 5" son de ejemplo.
 
-**Canción:** en `datos.js`, `musica` lleva el enlace de una canción de Spotify
-(ahora "Tears On My Pillow" de Grease). Al abrir el sobre sale su reproductor
-arriba; el invitado le da play y la canción sigue sonando al pasar de pantalla
-(la notita musical vuelve a mostrar el reproductor). Spotify no deja que suene
-sola, y sin sesión de Spotify solo suenan unos 30 segundos. Con `"demo"` suena
-una melodía de prueba y con `""` no hay música. No subas canciones con derechos
-de autor como MP3: el repositorio es público y cualquiera podría descargarlas.
+**Canción:** en `datos.js`, `musica` lleva el enlace de YouTube de la canción
+(ahora la versión oficial de "Tears On My Pillow" de Grease) y `cancion` su
+título y artista. Sale la pantalla "Nuestra canción" con el reproductor: el
+invitado le da play, la escucha completa y sigue sonando al deslizar; la notita
+musical lleva de regreso a esa pantalla. Puede salir un anuncio de YouTube.
+También acepta un enlace de Spotify (sale un reproductor arriba; sin sesión de
+Spotify solo suenan 30 segundos), `"demo"` (melodía de prueba) o `""` (sin
+música). No subas canciones con derechos de autor como MP3: el repositorio es
+público y cualquiera podría descargarlas.
 
 ## Invitaciones con nombre
 

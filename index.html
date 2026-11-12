@@ -125,6 +125,13 @@
       <path d="M30 37c0 7-2 12-6 17"/>
       <path d="M28 46c-6-2-10 0-12 4 5 1 9 0 12-4z"/>
     </symbol>
+    <!-- Notas musicales -->
+    <symbol id="notas" viewBox="0 0 60 60">
+      <path d="M22 44V17l24-6v27"/>
+      <path d="M22 23l24-6"/>
+      <ellipse cx="17.5" cy="44.5" rx="5" ry="3.8" transform="rotate(-20 17.5 44.5)"/>
+      <ellipse cx="41.5" cy="38.5" rx="5" ry="3.8" transform="rotate(-20 41.5 38.5)"/>
+    </symbol>
     <!-- Destello (una estrella sola) -->
     <symbol id="destello" viewBox="0 0 40 40">
       <path d="M20 6l3.2 10.8L34 20l-10.8 3.2L20 34l-3.2-10.8L6 20l10.8-3.2z"/>
@@ -160,7 +167,20 @@
         </div>
       </section>
 
-      <!-- 2. Mensaje, papás y padrinos -->
+      <!-- 2. Nuestra canción (reproductor de YouTube; sale solo si la música es de YouTube) -->
+      <section class="pantalla tema-oscuro cancion" id="cancion" data-titulo="Nuestra canción">
+        <svg class="dibujo chico arriba-izq" aria-hidden="true"><use href="#notas"/></svg>
+        <svg class="dibujo mini titila abajo-der" aria-hidden="true"><use href="#destello"/></svg>
+        <p class="aparece etiqueta">Nuestra canción</p>
+        <h2 class="aparece titulo" id="cancion-titulo"></h2>
+        <p class="aparece cancion-artista" id="cancion-artista"></p>
+        <div class="aparece reproductor">
+          <iframe id="youtube" title="Nuestra canción en YouTube" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <p class="aparece nota">Dale play y sigue deslizando: la canción sigue sonando.</p>
+      </section>
+
+      <!-- 3. Mensaje, papás y padrinos -->
       <section class="pantalla tema-arena" id="mensaje" data-titulo="Bienvenida">
         <svg class="dibujo ancho arriba-centro" aria-hidden="true"><use href="#mono"/></svg>
         <svg class="dibujo ancho bajo abajo-centro" aria-hidden="true"><use href="#hojitas"/></svg>

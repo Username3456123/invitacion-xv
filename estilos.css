@@ -902,7 +902,34 @@ symbol * { vector-effect: non-scaling-stroke; stroke-width: 1.15px; }
   0%, 100% { transform: rotate(-8deg); }
   50% { transform: rotate(8deg); }
 }
-.boton-musica.spotify .tachado { display: none; }
+.boton-musica.sin-tachado .tachado { display: none; }
+
+/* Nuestra canción: reproductor de YouTube (mínimo 200 px de alto, como pide YouTube) */
+.cancion-artista {
+  margin-top: -0.4em;
+  font-family: var(--letra-titulos);
+  font-style: italic;
+  font-size: 1.1em;
+  color: color-mix(in srgb, var(--en-oscuro) 75%, transparent);
+}
+.reproductor {
+  width: 100%;
+  max-width: 20em;
+  margin: 1.4em 0 1em;
+  border: 1px solid color-mix(in srgb, var(--acento-claro) 40%, transparent);
+  border-radius: 0.8em;
+  overflow: hidden;
+  background: #000;
+}
+.reproductor iframe {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  min-height: 200px;
+  border: 0;
+}
+.cancion .nota { color: color-mix(in srgb, var(--en-oscuro) 70%, transparent); max-width: 18em; }
 
 /* Reproductor de Spotify: recuadro arriba que se esconde sin cortar la canción */
 .panel-musica {

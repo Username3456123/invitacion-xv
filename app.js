@@ -425,13 +425,35 @@
     const modo = D.musica;
     const boton = $("#boton-musica");
 
+    // Canción de YouTube: su propia pantalla "Nuestra canción" con el reproductor.
+    // Suena completa para todos; el invitado le da play.
+    const seccionCancion = $("#cancion");
+    const video = /(?:youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/)|youtu\.be\/)([\w-]{11})/.exec(modo || "");
+    if (!video) seccionCancion.remove();
+    if (video) {
+      const C2 = D.cancion || {};
+      poner("#cancion-titulo", C2.titulo);
+      poner("#cancion-artista", C2.artista);
+      boton.classList.add("sin-tachado");
+      boton.setAttribute("aria-label", "Ir a nuestra canción");
+      boton.addEventListener("click", () => seccionCancion.scrollIntoView({ behavior: sinMovimiento ? "auto" : "smooth" }));
+      return {
+        iniciar() {
+          // se carga hasta abrir el sobre (youtube-nocookie: sin cookies hasta darle play)
+          $("#youtube").src = `https://www.youtube-nocookie.com/embed/${video[1]}?rel=0&playsinline=1`;
+          boton.hidden = false;
+        },
+        alSalirDeLaPortada() {},
+      };
+    }
+
     // Canción de Spotify: su reproductor oficial en un recuadro arriba.
     // Spotify no deja que suene sola: el invitado le da play.
     const pista = /open\.spotify\.com\/(?:intl-[a-z-]+\/)?track\/([A-Za-z0-9]+)/.exec(modo || "");
     if (pista) {
       const panel = $("#panel-musica");
       const marcoSpotify = $("#spotify");
-      boton.classList.add("spotify");
+      boton.classList.add("sin-tachado");
       boton.setAttribute("aria-label", "Mostrar la canción");
       const mostrar = () => {
         panel.hidden = false;
