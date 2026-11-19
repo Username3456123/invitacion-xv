@@ -11,6 +11,9 @@ const INVITACION = {
   // o "vestido" (morado del vestido, lavanda y plateado).
   // Para probar otra sin cambiar esta, agrega al enlace: ?paleta=berenjena
   paleta: "vestido",
+  // "clasico" o "moderno" (más cargado: degradados, brillos y un XV grande de fondo).
+  // Para probar el otro sin cambiar este, agrega al enlace: ?estilo=moderno
+  estilo: "clasico",
 
   // ---------- La quinceañera ----------
   nombre: "Daniela",            // va grande, en letra manuscrita

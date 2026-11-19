@@ -19,8 +19,11 @@
   <script>
     // La paleta se pone antes de pintar la página, para que no parpadee
     (function () {
-      var p = new URLSearchParams(location.search).get("paleta") || INVITACION.paleta;
+      var q = new URLSearchParams(location.search);
+      var p = q.get("paleta") || INVITACION.paleta;
       if (p && p !== "neutral") document.documentElement.dataset.paleta = p;
+      var e = q.get("estilo") || INVITACION.estilo;
+      if (e && e !== "clasico") document.documentElement.dataset.estilo = e;
     })();
   </script>
 </head>
@@ -148,6 +151,7 @@
 
       <!-- 1. Portada -->
       <section class="pantalla tema-claro portada" id="inicio" data-titulo="Inicio">
+        <span class="xv-fondo" aria-hidden="true">XV</span>
         <div class="brillos" aria-hidden="true"></div>
         <svg class="rama arriba-izq" aria-hidden="true"><use href="#rama"/></svg>
         <svg class="rama abajo-der" aria-hidden="true"><use href="#rama"/></svg>
@@ -169,6 +173,7 @@
 
       <!-- 2. Nuestra canción (reproductor de YouTube; sale solo si la música es de YouTube) -->
       <section class="pantalla tema-oscuro cancion" id="cancion" data-titulo="Nuestra canción">
+        <div class="brillos solo-moderno" aria-hidden="true"></div>
         <svg class="dibujo chico arriba-izq" aria-hidden="true"><use href="#notas"/></svg>
         <svg class="dibujo mini titila abajo-der" aria-hidden="true"><use href="#destello"/></svg>
         <p class="aparece etiqueta">Nuestra canción</p>
@@ -201,6 +206,7 @@
 
       <!-- 3. Conteo -->
       <section class="pantalla tema-oscuro" id="conteo" data-titulo="Cuenta regresiva">
+        <div class="brillos solo-moderno" aria-hidden="true"></div>
         <svg class="dibujo confeti titila arriba-izq" aria-hidden="true"><use href="#confeti"/></svg>
         <svg class="dibujo confeti titila abajo-der" aria-hidden="true"><use href="#confeti"/></svg>
         <p class="aparece etiqueta">Cuenta regresiva</p>
@@ -264,6 +270,7 @@
 
       <!-- 6. Itinerario -->
       <section class="pantalla tema-oscuro" id="itinerario" data-titulo="Itinerario">
+        <div class="brillos solo-moderno" aria-hidden="true"></div>
         <svg class="dibujo arriba-izq" aria-hidden="true"><use href="#luna"/></svg>
         <svg class="dibujo titila abajo-der" aria-hidden="true"><use href="#estrellas"/></svg>
         <p class="aparece etiqueta">Itinerario</p>
@@ -291,6 +298,7 @@
 
       <!-- 8. Quiz -->
       <section class="pantalla tema-oscuro" id="quiz" data-titulo="Quiz">
+        <div class="brillos solo-moderno" aria-hidden="true"></div>
         <svg class="dibujo mariposa arriba-izq" aria-hidden="true"><use href="#mariposa"/></svg>
         <svg class="dibujo mariposa chica abajo-der" aria-hidden="true"><use href="#mariposa"/></svg>
         <p class="aparece etiqueta">Quiz</p>
@@ -398,6 +406,7 @@
 
       <!-- 12. Despedida -->
       <section class="pantalla tema-oscuro despedida" id="despedida" data-titulo="Te espero">
+        <span class="xv-fondo" aria-hidden="true">XV</span>
         <div class="brillos" aria-hidden="true"></div>
         <svg class="rama arriba-izq" aria-hidden="true"><use href="#rama"/></svg>
         <svg class="rama abajo-der" aria-hidden="true"><use href="#rama"/></svg>

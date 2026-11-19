@@ -1118,3 +1118,155 @@ symbol * { vector-effect: non-scaling-stroke; stroke-width: 1.15px; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .aparece { opacity: 1; transform: none; }
 }
+
+/* ============================================================
+   ESTILO MODERNO (más cargado): los mismos colores, con degradados,
+   luces, títulos con brillo, tarjetas de cristal y un XV grande de fondo.
+   Se elige en datos.js → estilo, o se prueba con ?estilo=moderno
+   ============================================================ */
+.xv-fondo,
+.brillos.solo-moderno { display: none; }
+
+:root[data-estilo="moderno"] {
+  --violeta-luz: color-mix(in srgb, var(--oscuro) 62%, #9a6be0);
+  --plata-brillo: linear-gradient(100deg, #ffffff 0%, var(--acento-claro) 42%, #ffffff 58%, #b8b2c6 100%);
+  --violeta-brillo: linear-gradient(100deg, var(--oscuro) 0%, var(--violeta-luz) 55%, var(--oscuro) 100%);
+}
+:root[data-estilo="moderno"] .xv-fondo,
+:root[data-estilo="moderno"] .brillos.solo-moderno { display: block; }
+
+/* Fondos con luz y degradado */
+:root[data-estilo="moderno"] .tema-oscuro {
+  background:
+    radial-gradient(120% 65% at 50% -8%, color-mix(in srgb, var(--violeta-luz) 70%, transparent), transparent 62%),
+    radial-gradient(80% 50% at 105% 105%, color-mix(in srgb, var(--violeta-luz) 45%, transparent), transparent 60%),
+    var(--oscuro);
+}
+:root[data-estilo="moderno"] .tema-claro,
+:root[data-estilo="moderno"] .tema-arena {
+  background:
+    radial-gradient(70% 45% at 100% 0%, color-mix(in srgb, var(--violeta-luz) 14%, transparent), transparent 70%),
+    radial-gradient(70% 45% at 0% 100%, color-mix(in srgb, var(--violeta-luz) 12%, transparent), transparent 70%),
+    linear-gradient(170deg, var(--claro), var(--arena));
+}
+
+/* Marco redondeado de una sola línea */
+:root[data-estilo="moderno"] .pantalla::before { border-radius: 1.6em; }
+:root[data-estilo="moderno"] .pantalla::after { display: none; }
+
+/* XV grande de fondo (portada y despedida); el contenido va encima */
+:root[data-estilo="moderno"] .pantalla > .aparece { position: relative; z-index: 1; }
+.xv-fondo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 0;
+  transform: translate(-50%, -54%);
+  font-family: var(--letra-titulos);
+  font-size: 15em;
+  font-weight: 600;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--acento) 40%, transparent);
+  pointer-events: none;
+  user-select: none;
+}
+.tema-oscuro .xv-fondo { -webkit-text-stroke-color: color-mix(in srgb, var(--acento-claro) 30%, transparent); }
+
+/* Títulos con brillo: plateado sobre morado, violeta sobre claro */
+:root[data-estilo="moderno"] .titulo,
+:root[data-estilo="moderno"] .nombre,
+:root[data-estilo="moderno"] .boleto-titulo {
+  background: var(--violeta-brillo);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+:root[data-estilo="moderno"] .nombre { padding: 0.08em 0.4em 0.22em; } /* que no se corten los adornos de la letra */
+:root[data-estilo="moderno"] .tema-oscuro .titulo,
+:root[data-estilo="moderno"] .tema-oscuro .nombre,
+:root[data-estilo="moderno"] .solapa.arriba .nombre,
+:root[data-estilo="moderno"] .boleto-titulo { background-image: var(--plata-brillo); }
+
+/* Etiquetas en pastilla */
+:root[data-estilo="moderno"] .pantalla > .etiqueta {
+  padding: 0.55em 0.85em 0.55em 1.17em;
+  border: 1px solid var(--linea);
+  border-radius: 999px;
+  background: color-mix(in srgb, #ffffff 45%, transparent);
+}
+:root[data-estilo="moderno"] .tema-oscuro > .etiqueta {
+  border-color: color-mix(in srgb, var(--acento-claro) 35%, transparent);
+  background: color-mix(in srgb, #ffffff 7%, transparent);
+}
+
+/* Tarjetas de cristal: conteo y opciones del quiz */
+:root[data-estilo="moderno"] .conteo div {
+  border-radius: 0.9em;
+  border-color: color-mix(in srgb, var(--acento-claro) 40%, transparent);
+  background: linear-gradient(160deg, color-mix(in srgb, #ffffff 14%, transparent), color-mix(in srgb, #ffffff 3%, transparent));
+}
+:root[data-estilo="moderno"] .conteo .num {
+  background: var(--plata-brillo);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+:root[data-estilo="moderno"] .opcion {
+  border-radius: 1em;
+  background: linear-gradient(160deg, color-mix(in srgb, #ffffff 10%, transparent), color-mix(in srgb, #ffffff 3%, transparent));
+}
+
+/* Botones con degradado */
+:root[data-estilo="moderno"] .boton:not(.secundario) {
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--oscuro), var(--violeta-luz));
+  box-shadow: 0 10px 24px -14px color-mix(in srgb, var(--oscuro) 80%, transparent);
+}
+:root[data-estilo="moderno"] .tema-oscuro .boton:not(.secundario) {
+  background: linear-gradient(135deg, #ffffff, var(--acento-claro));
+  color: var(--oscuro);
+}
+
+/* Arco de la portada con un segundo marco desplazado */
+:root[data-estilo="moderno"] .arco::after {
+  content: "";
+  position: absolute;
+  inset: 0.9em -0.9em -0.9em 0.9em;
+  z-index: -1;
+  border: 1px solid var(--linea);
+  border-radius: 999px 999px 0.6em 0.6em;
+}
+
+/* Boleto: el pase en morado con letras plateadas */
+:root[data-estilo="moderno"] .boleto-arriba {
+  border-radius: 0.85em 0.85em 0 0;
+  background: linear-gradient(135deg, var(--oscuro), var(--violeta-luz));
+}
+:root[data-estilo="moderno"] .boleto-admite { color: var(--acento-claro); }
+:root[data-estilo="moderno"] .boleto-xv { color: color-mix(in srgb, var(--en-oscuro) 75%, transparent); }
+
+/* Itinerario: puntos rellenos de plata */
+:root[data-estilo="moderno"] .lt-punto {
+  background: var(--acento-claro);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--acento-claro) 22%, transparent);
+}
+
+/* Adornos un poco más visibles */
+:root[data-estilo="moderno"] .rama,
+:root[data-estilo="moderno"] .dibujo { opacity: 0.75; }
+
+/* Sobre: la mitad de arriba en morado */
+:root[data-estilo="moderno"] .solapa.arriba {
+  background:
+    radial-gradient(90% 70% at 50% 110%, color-mix(in srgb, var(--violeta-luz) 70%, transparent), transparent 70%),
+    var(--oscuro);
+  color: var(--en-oscuro);
+  border-bottom-color: color-mix(in srgb, var(--acento-claro) 40%, transparent);
+}
+:root[data-estilo="moderno"] .solapa.arriba .etiqueta,
+:root[data-estilo="moderno"] .solapa.arriba .dibujo { color: var(--acento-claro); }
+:root[data-estilo="moderno"] .solapa.arriba .apellidos { color: color-mix(in srgb, var(--en-oscuro) 75%, transparent); }
+:root[data-estilo="moderno"] .solapa.arriba .para-quien { color: var(--en-oscuro); border-color: color-mix(in srgb, var(--acento-claro) 40%, transparent); }
+/* En la portada el XV va detrás del nombre (arriba está el arco de la foto) */
+.portada .xv-fondo { top: 70%; font-size: 12em; }
