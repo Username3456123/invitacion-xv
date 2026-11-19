@@ -393,18 +393,53 @@
     $("#etiqueta-mensaje").textContent = `Un mensaje para ${D.nombre} (opcional)`;
 
     const asiste = () => form.elements.asiste.value === "si";
-    nombre.addEventListener("input", () => {
-      nombre.closest(".campo").classList.remove("mal");
-      $("#rsvp-error").hidden = true;
+    const edad = () => form.elements.edad.value; // "nino", "adulto" o "" si no eligió
+    const tel = $("#rsvp-tel");
+    const digitos = () => tel.value.replace(/\D/g, "");
+    const quitarError = (campo, error) => {
+      if (campo) campo.classList.remove("mal");
+      $(error).hidden = true;
+    };
+    const marcarError = (campo, error) => {
+      if (campo) campo.classList.add("mal");
+      $(error).hidden = false;
+    };
+
+    nombre.addEventListener("input", () => quitarError(nombre.closest(".campo"), "#rsvp-error"));
+    tel.addEventListener("input", () => quitarError(tel.closest(".campo"), "#tel-error"));
+    form.addEventListener("change", (ev) => {
+      if (ev.target.name === "edad") {
+        quitarError($("#campo-edad"), "#edad-error");
+        $("#datos-nino").hidden = edad() !== "nino"; // el celular solo se pide a los niños
+      }
+      if (ev.target.name === "parentesco") quitarError($("#datos-nino .segmentado.tres").closest(".campo"), "#parentesco-error");
     });
 
     form.addEventListener("submit", (ev) => {
       ev.preventDefault();
       const quien = nombre.value.trim();
+      const parentesco = form.elements.parentesco.value;
+      const errores = [];
       if (quien.length < 2) {
-        nombre.closest(".campo").classList.add("mal");
-        $("#rsvp-error").hidden = false;
-        nombre.focus();
+        marcarError(nombre.closest(".campo"), "#rsvp-error");
+        errores.push(nombre);
+      }
+      if (!edad()) {
+        marcarError($("#campo-edad"), "#edad-error");
+        errores.push($("#campo-edad input"));
+      }
+      if (edad() === "nino") {
+        if (digitos().length < 10 || digitos().length > 13) {
+          marcarError(tel.closest(".campo"), "#tel-error");
+          errores.push(tel);
+        }
+        if (!parentesco) {
+          marcarError($("#datos-nino .segmentado.tres").closest(".campo"), "#parentesco-error");
+          errores.push($("#datos-nino .segmentado.tres input"));
+        }
+      }
+      if (errores.length) {
+        errores[0].focus();
         return;
       }
       const mensaje = $("#rsvp-mensaje").value.trim();
@@ -413,6 +448,12 @@
         : [`¡Hola! ${quien} no podrá asistir a los XV años de ${D.nombre}. ¡Muchas felicidades!`];
       // Si la invitación trae pases (?pases=4), se dice solo; el invitado no elige cuántos
       if (asiste() && pasesMax > 0) lineas.push(`Pase para ${pasesMax} ${pasesMax === 1 ? "persona" : "personas"}.`);
+      // Si es niño(a): el celular del adulto que lo cuida
+      if (edad() === "nino") {
+        const d = digitos();
+        const bonito = d.length === 10 ? `${d.slice(0, 2)} ${d.slice(2, 6)} ${d.slice(6)}` : d;
+        lineas.push(`El número de mi ${parentesco} es ${bonito}.`);
+      }
       if (mensaje) lineas.push(`Mensaje: ${mensaje}`);
       if (puntajeQuiz) lineas.push(`En el quiz saqué ${puntajeQuiz} 😄`);
       window.open(`https://wa.me/${numero}?text=${encodeURIComponent(lineas.join("\n"))}`, "_blank", "noopener");

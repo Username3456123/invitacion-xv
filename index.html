@@ -336,7 +336,6 @@
 
       <!-- 11. Confirmar asistencia -->
       <section class="pantalla tema-arena" id="confirmar" data-titulo="Confirmar">
-        <svg class="dibujo ancho bajo arriba-centro" aria-hidden="true"><use href="#hojitas"/></svg>
         <p class="aparece etiqueta">R.S.V.P.</p>
         <h2 class="aparece titulo">Confirma tu asistencia</h2>
         <p class="aparece texto" id="pases-texto" hidden></p>
@@ -346,6 +345,33 @@
             <input name="nombre" id="rsvp-nombre" maxlength="60" autocomplete="name" placeholder="Nombre y apellido">
           </label>
           <p class="error" id="rsvp-error" hidden>Escribe tu nombre para confirmar.</p>
+
+          <fieldset class="campo" id="campo-edad">
+            <legend class="etiqueta-campo">¿Quién confirma?</legend>
+            <div class="segmentado">
+              <label><input type="radio" name="edad" value="nino"><span>Soy niño(a)</span></label>
+              <label><input type="radio" name="edad" value="adulto"><span>Soy adulto</span></label>
+            </div>
+          </fieldset>
+          <p class="error" id="edad-error" hidden>Elige si eres niño(a) o adulto.</p>
+
+          <!-- Solo si es niño(a): celular de un adulto y de quién es -->
+          <div id="datos-nino" hidden>
+            <label class="campo">
+              <span class="etiqueta-campo">Celular de un adulto</span>
+              <input type="tel" id="rsvp-tel" inputmode="tel" maxlength="20" autocomplete="off" placeholder="10 dígitos">
+            </label>
+            <p class="error" id="tel-error" hidden>Escribe el celular de un adulto (10 dígitos).</p>
+            <fieldset class="campo">
+              <legend class="etiqueta-campo">Este celular es de mi…</legend>
+              <div class="segmentado tres">
+                <label><input type="radio" name="parentesco" value="papá"><span>Papá</span></label>
+                <label><input type="radio" name="parentesco" value="mamá"><span>Mamá</span></label>
+                <label><input type="radio" name="parentesco" value="familiar"><span>Otro familiar</span></label>
+              </div>
+            </fieldset>
+            <p class="error" id="parentesco-error" hidden>Elige de quién es el celular.</p>
+          </div>
 
           <fieldset class="campo">
             <legend class="etiqueta-campo">¿Me acompañas?</legend>
@@ -357,7 +383,7 @@
 
           <label class="campo">
             <span class="etiqueta-campo" id="etiqueta-mensaje">Un mensaje (opcional)</span>
-            <textarea name="mensaje" id="rsvp-mensaje" rows="2" maxlength="200" placeholder="Escribe algo bonito…"></textarea>
+            <textarea name="mensaje" id="rsvp-mensaje" rows="1" maxlength="200" placeholder="Escribe algo bonito…"></textarea>
           </label>
 
           <button class="boton ancho" type="submit">

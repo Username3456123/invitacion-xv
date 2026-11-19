@@ -864,6 +864,24 @@ symbol * { vector-effect: non-scaling-stroke; stroke-width: 1.15px; }
 }
 .segmentado input:checked + span { background: var(--oscuro); border-color: var(--oscuro); color: var(--claro); }
 .segmentado input:focus-visible + span { outline: 2px solid var(--acento); outline-offset: 2px; }
+/* Confirmar: más compacto, para que quepan los campos de niño(a) en celulares chicos */
+#confirmar { padding-top: 2.4em; padding-bottom: 2.2em; }
+#confirmar .titulo { font-size: 1.8em; margin: 0.2em 0 0.45em; }
+#confirmar .campo { margin-bottom: 0.7em; }
+#confirmar .etiqueta-campo { margin-bottom: 0.35em; }
+#confirmar .segmentado span { padding: 0.6em 0.4em; }
+#confirmar .campo input:not([type=radio]),
+#confirmar .campo textarea { padding: 0.38em 0; }
+#confirmar .error { margin: -0.4em 0 0.65em; }
+#confirmar .nota { margin-top: 0.6em; }
+.segmentado.tres { grid-template-columns: repeat(3, 1fr); gap: 0.4em; }
+.segmentado.tres span { padding: 0.8em 0.2em; font-size: 0.8em; }
+.campo.mal .segmentado span { border-color: var(--error); }
+#datos-nino { animation: aparecer-suave 0.35s ease; }
+@keyframes aparecer-suave {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: none; }
+}
 .formulario .boton { margin-top: 0.3em; }
 .formulario .nota { text-align: center; color: var(--oscuro); }
 
